@@ -19,5 +19,11 @@
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --root-mode upward --extensions .ts,.tsx -d dist/cjs --plugins=inline-react-svg  --source-maps --copy-files",
     "build:esm": "cross-env BABEL_ENV=esm babel src --root-mode upward --extensions .ts,.tsx -d dist/esm --plugins=inline-react-svg  --source-maps --copy-files",
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types"
-  }
+  },
+  "dependencies": {
+    "@bcdapps/icons": "1.0.0",
+    "classnames": "^2.2.6",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {}
 }
