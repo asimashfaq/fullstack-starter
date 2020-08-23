@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import HomeIconSvg from './assets/icon-home.svg';
-export const HomeIcon: FC  = <HomeIconSvg/>;
+export const HomeIcon:React.FC =  React.memo(props => {
+    return(<HomeIconSvg/>)
+});
 
 
