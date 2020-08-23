@@ -22,5 +22,5 @@
       "declaration": true,
 
     },
-    "include": ["packages"],
+    "include": ["packages", "postcss.config.js", "tailwind.config.js"],
   }
