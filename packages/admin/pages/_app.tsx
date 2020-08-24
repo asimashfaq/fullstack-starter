@@ -4,8 +4,12 @@ import 'reflect-metadata';
 import React from 'react';
 import Head from 'next/head';
 import App, { AppInitialProps } from 'next/app';
+import { Provider } from 'react-redux';
+
+
 import i18nConfig from '../i18n.config';
 import { changeDocumentLanguage, setI18nCookie, changeDocumentDirection } from '../utils/i18n';
+import { store } from '../store';
 
 const { allLanguages, defaultLanguage } = i18nConfig;
 
@@ -46,6 +50,8 @@ class MyApp extends App<AppInitialProps> {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         </Head>
+        <Provider store={store}>
+
           <div
             dir={direction}
             className="text-gray-800 antialiased"
@@ -54,6 +60,9 @@ class MyApp extends App<AppInitialProps> {
               {...pageProps}
             />
           </div>
+          </Provider>
+
+
       </>
     );
   }
