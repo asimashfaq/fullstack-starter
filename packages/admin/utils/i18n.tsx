@@ -13,7 +13,7 @@ type AvailableLanguages = string[];
 type AvailableLanguage = string;
 
 export interface Translations {
-  [key:string]: JsonMap;
+  [key: string]: JsonMap;
 }
 
 export interface GetI18nProps {
@@ -43,18 +43,20 @@ const I18nContext = React.createContext({
   config: defaultLanguage,
 });
 
-export const useDynamicI18n = (path: string): {
-  language: AvailableLanguage,
-  config: typeof defaultLanguage,
-  translations: Translations,
-  isLoading: boolean,
-  error: typeof Error,
+export const useDynamicI18n = (
+  path: string,
+): {
+  language: AvailableLanguage;
+  config: typeof defaultLanguage;
+  translations: Translations;
+  isLoading: boolean;
+  error: typeof Error;
 } => {
   const { language } = React.useContext(I18nContext);
 
   const { data, error } = useSWR(
     `/translations${path}/${language}.json`,
-    async (TranslationsNeeded) => (await fetch(TranslationsNeeded)).json(),
+    async TranslationsNeeded => (await fetch(TranslationsNeeded)).json(),
   );
 
   return {
@@ -66,10 +68,12 @@ export const useDynamicI18n = (path: string): {
   };
 };
 
-export const useI18n = (path: string): {
-  language: AvailableLanguage,
-  translations: JsonMap,
-  config: typeof defaultLanguage,
+export const useI18n = (
+  path: string,
+): {
+  language: AvailableLanguage;
+  translations: JsonMap;
+  config: typeof defaultLanguage;
 } => {
   const { language, translations } = React.useContext(I18nContext);
 
@@ -81,15 +85,21 @@ export const useI18n = (path: string): {
 };
 
 /* eslint-disable react/jsx-props-no-spreading */
-export const withPrefetchDynamicTranslations = <Props, >(
-  Component: React.FC<Props>, path: string,
+export const withPrefetchDynamicTranslations = <Props,>(
+  Component: React.FC<Props>,
+  path: string,
 ): React.FC<Props> => {
-  const WithPrefetchDynamicTranslations: React.FC<Props> = (props) => {
+  const WithPrefetchDynamicTranslations: React.FC<Props> = props => {
     const { language } = React.useContext(I18nContext);
     return (
       <>
         <Head>
-          <link rel="prefetch" href={`/translations${path}/${language}.json`} as="fetch" crossOrigin="anonymous" />
+          <link
+            rel="prefetch"
+            href={`/translations${path}/${language}.json`}
+            as="fetch"
+            crossOrigin="anonymous"
+          />
         </Head>
         <Component {...props} />
       </>
@@ -99,23 +109,24 @@ export const withPrefetchDynamicTranslations = <Props, >(
   return WithPrefetchDynamicTranslations;
 };
 
-const HrefAlternateHeadTags: React.FC<{pathname: string}> = ({ pathname }) => {
-  const currentDomain = process.env.NODE_ENV === 'production' ? domains.production : domains.development;
+const HrefAlternateHeadTags: React.FC<{ pathname: string }> = ({
+  pathname,
+}) => {
+  const currentDomain =
+    process.env.NODE_ENV === 'production'
+      ? domains.production
+      : domains.development;
 
   return (
     <Head>
-      {
-        Object.keys(allLanguages).map(
-          (language) => (
-            <link
-              key={allLanguages[language].prefix}
-              rel="alternate"
-              href={`${currentDomain}/${allLanguages[language].prefix}${pathname}`}
-              hrefLang={allLanguages[language].prefix}
-            />
-          ),
-        )
-      }
+      {Object.keys(allLanguages).map(language => (
+        <link
+          key={allLanguages[language].prefix}
+          rel="alternate"
+          href={`${currentDomain}/${allLanguages[language].prefix}${pathname}`}
+          hrefLang={allLanguages[language].prefix}
+        />
+      ))}
     </Head>
   );
 };
@@ -124,19 +135,25 @@ const HrefAlternateHeadTags: React.FC<{pathname: string}> = ({ pathname }) => {
 /*
   pageRoute is used to add the href alternate head tags link. Optional
 */
-export const withI18n = (Page: NextPage, pageRoute?: string): NextPage<GetI18nProps> => {
-  const WithI18nProvider: NextPage<GetI18nProps> = ({ language, translations, ...props }) => (
-    <I18nContext.Provider value={{
-      language,
-      translations,
-      config: allLanguages[language],
-    }}
+export const withI18n = (
+  Page: NextPage,
+  pageRoute?: string,
+): NextPage<GetI18nProps> => {
+  const WithI18nProvider: NextPage<GetI18nProps> = ({
+    language,
+    translations,
+    ...props
+  }) => (
+    <I18nContext.Provider
+      value={{
+        language,
+        translations,
+        config: allLanguages[language],
+      }}
     >
-      {
-        typeof pageRoute !== 'undefined' && (
-          <HrefAlternateHeadTags pathname={pageRoute} />
-        )
-      }
+      {typeof pageRoute !== 'undefined' && (
+        <HrefAlternateHeadTags pathname={pageRoute} />
+      )}
       <Page {...props} />
     </I18nContext.Provider>
   );
@@ -145,9 +162,9 @@ export const withI18n = (Page: NextPage, pageRoute?: string): NextPage<GetI18nPr
 };
 
 export function getI18nStaticPaths(): GetI18nStaticPaths[] {
-  return Object.keys(allLanguages).map(
-    (language) => ({ params: { language: allLanguages[language].prefix } }),
-  );
+  return Object.keys(allLanguages).map(language => ({
+    params: { language: allLanguages[language].prefix },
+  }));
 }
 
 const loadAllTranslations = async (
@@ -158,7 +175,6 @@ const loadAllTranslations = async (
   const translations: Translations = {};
 
   const loadTranslationsFromDir = async (dirname: string): Promise<void> => {
-
     const files = await fs.readdir(dirname);
     await Promise.all(
       files.map(async (file: any) => {
@@ -166,7 +182,7 @@ const loadAllTranslations = async (
         const stats = await fs.stat(fileOrSubDir);
         if (stats.isDirectory()) {
           await loadTranslationsFromDir(fileOrSubDir);
-        } else if (stats.isFile() && (file.endsWith(`${language}.json`))) {
+        } else if (stats.isFile() && file.endsWith(`${language}.json`)) {
           // Not sure why this isn't working
           // const module = await import(`../${fileOrSubDir}`);
           // translations[fileOrSubDir] = module.default as JsonMap;
@@ -190,13 +206,17 @@ export const getI18nProps = async ({
   language: AvailableLanguage;
   paths?: string[];
   translationsDir?: string;
-  fs?: any
+  fs?: any;
 }): Promise<GetI18nProps> => {
   const translations: Translations = {};
   if (!paths) {
     // recurse over all existing translations
-    const fullTranslations = await loadAllTranslations(translationsDir, language, fs);
-    Object.keys(fullTranslations).forEach((translationKey) => {
+    const fullTranslations = await loadAllTranslations(
+      translationsDir,
+      language,
+      fs,
+    );
+    Object.keys(fullTranslations).forEach(translationKey => {
       translations[
         translationKey
           .slice(translationsDir.length)
@@ -206,23 +226,27 @@ export const getI18nProps = async ({
   } else {
     const unqiquePaths = [...Array.from(new Set(paths))];
     await Promise.all(
-      unqiquePaths.map(async (path) => {
-        const module = await import(`../${translationsDir}${path}/${language}.json`);
+      unqiquePaths.map(async path => {
+        const module = await import(
+          `../${translationsDir}${path}/${language}.json`
+        );
         translations[path] = module.default as JsonMap;
       }),
     );
   }
 
-  return ({
+  return {
     language: language || defaultLanguage.prefix,
     translations,
-  });
+  };
 };
 
 /*
 only works in the browser or if you pass it a pathname
 */
-export const getLanguageFromURL = (pathname?: string): AvailableLanguage | undefined => {
+export const getLanguageFromURL = (
+  pathname?: string,
+): AvailableLanguage | undefined => {
   let finalPathname;
   if (typeof window !== 'undefined') {
     finalPathname = pathname || window.location.pathname;
@@ -232,9 +256,9 @@ export const getLanguageFromURL = (pathname?: string): AvailableLanguage | undef
     return undefined;
   }
   const language = finalPathname.split('/')[1];
-  const isValidLanguage = (Object.keys(allLanguages) as AvailableLanguages).some(
-    (validLanugage) => validLanugage === language,
-  );
+  const isValidLanguage = (Object.keys(
+    allLanguages,
+  ) as AvailableLanguages).some(validLanugage => validLanugage === language);
   if (isValidLanguage) {
     return language as AvailableLanguage;
   } else {
@@ -245,7 +269,9 @@ export const getLanguageFromURL = (pathname?: string): AvailableLanguage | undef
 /*
 only works in the browser or if you pass it a pathname
 */
-export const getI18nAgnosticPathname = (pathname?: string): string | undefined => {
+export const getI18nAgnosticPathname = (
+  pathname?: string,
+): string | undefined => {
   let finalPathname;
   if (pathname === '') {
     return '';
@@ -260,10 +286,10 @@ export const getI18nAgnosticPathname = (pathname?: string): string | undefined =
   const paths = finalPathname.split('/');
   const mightBePrefix = paths[1];
 
-  const allPrefixes = Object.values(allLanguages).map((lang) => lang.prefix);
+  const allPrefixes = Object.values(allLanguages).map(lang => lang.prefix);
   allPrefixes.push('[language]');
 
-  const isPrefix = allPrefixes.some((prefix) => prefix === mightBePrefix);
+  const isPrefix = allPrefixes.some(prefix => prefix === mightBePrefix);
 
   if (isPrefix) {
     paths.splice(1, 1);
@@ -287,7 +313,8 @@ export const changeDocumentDirection = (direction: string): void => {
 };
 
 export const setI18nCookie = (language: string): void => {
-  document.cookie = 'preferred-language=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  document.cookie =
+    'preferred-language=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   const now = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30 * 12 * 3); // 3 years
   const date = now.toUTCString();
   document.cookie = `preferred-language=${language}; expires=${date}`;
@@ -297,21 +324,30 @@ export const setI18nCookie = (language: string): void => {
 // https://stackoverflow.com/questions/3393854/get-and-set-a-single-cookie-with-node-js-http-server
 // https://stackoverflow.com/questions/51812422/node-js-how-can-i-get-cookie-value-by-cookie-name-from-request
 // Consider using https://github.com/jshttp/cookie?
-export const getI18nCookieFromUnparsedCookieHeader = (cookieHeader: string): string | undefined => {
-  const parsedCookie: {[key: string]: string} = {};
+export const getI18nCookieFromUnparsedCookieHeader = (
+  cookieHeader: string,
+): string | undefined => {
+  const parsedCookie: { [key: string]: string } = {};
 
-  cookieHeader && cookieHeader.split(';').forEach((cookie) => {
-    const parts = cookie.split('=');
-    if (parts.length) {
-      parsedCookie[(parts.shift() as string).trim()] = decodeURI(parts.join('='));
-    }
-  });
+  cookieHeader &&
+    cookieHeader.split(';').forEach(cookie => {
+      const parts = cookie.split('=');
+      if (parts.length) {
+        parsedCookie[(parts.shift() as string).trim()] = decodeURI(
+          parts.join('='),
+        );
+      }
+    });
 
   return parsedCookie['preferred-language'];
 };
 
 export const Link: React.FC<LinkProps> = ({
-  children, href, as, language, ...props
+  children,
+  href,
+  as,
+  language,
+  ...props
 }) => {
   const { language: contextLanguage } = React.useContext(I18nContext);
   const finalLanguage = language || contextLanguage;

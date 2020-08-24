@@ -5,7 +5,7 @@ export interface Language {
 }
 
 interface Config {
-  [key:string]: Language
+  [key: string]: Language;
 }
 
 interface Domains {

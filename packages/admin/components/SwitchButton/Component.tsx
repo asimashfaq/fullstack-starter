@@ -10,19 +10,19 @@ import {
 const TranslationsNeeded = '/components/SwitchButton';
 
 const Component: React.FC = () => {
-  const {
-    translations, config,
-  } = useI18n(TranslationsNeeded);
+  const { translations, config } = useI18n(TranslationsNeeded);
 
   return (
     <button
-      onClick={
-        () => {
-          setI18nCookie(config.prefix === 'en' ? 'ar' : 'en');
-          changeDocumentLanguage(config.prefix === 'en' ? 'ar' : 'en');
-          Router.push(`/${config.prefix === 'en' ? 'ar' : 'en'}${getI18nAgnosticPathname() || ''}`);
-        }
-      }
+      onClick={() => {
+        setI18nCookie(config.prefix === 'en' ? 'ar' : 'en');
+        changeDocumentLanguage(config.prefix === 'en' ? 'ar' : 'en');
+        Router.push(
+          `/${
+            config.prefix === 'en' ? 'ar' : 'en'
+          }${getI18nAgnosticPathname() || ''}`,
+        );
+      }}
       type="button"
     >
       {translations.name}
@@ -30,8 +30,6 @@ const Component: React.FC = () => {
   );
 };
 
-export const AllTranslationsNeeded: string[] = [
-  TranslationsNeeded,
-];
+export const AllTranslationsNeeded: string[] = [TranslationsNeeded];
 
 export default Component;

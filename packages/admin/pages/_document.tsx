@@ -2,7 +2,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Document, {
-  DocumentInitialProps, Html, Head, Main, NextScript, DocumentContext,
+  DocumentInitialProps,
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { getLanguageFromURL } from '../utils/i18n';
@@ -13,9 +18,11 @@ export default class MyDocument extends Document<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
     try {
-      ctx.renderPage = () => originalRenderPage({
-        enhanceApp: (App:any) => (props:any) => sheet.collectStyles(<App {...props} />),
-      });
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App: any) => (props: any) =>
+            sheet.collectStyles(<App {...props} />),
+        });
 
       const initialProps = await Document.getInitialProps(ctx);
       return {
