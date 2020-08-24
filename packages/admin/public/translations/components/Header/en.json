@@ -1,0 +1,7 @@
+{
+  "pages": {
+    "/": "Home",
+    "ssr": "SSR",
+    "dynamic": "Dynamic"
+  }
+}

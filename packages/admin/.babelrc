@@ -1,0 +1,29 @@
+{
+    "presets": [
+        [
+            "next/babel",
+            {
+                "preset-env": {
+                    "targets": {
+                        "browsers": [
+                            "> 0.25%, not dead"
+                        ]
+                    }
+                }
+            }
+        ],
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "inline-react-svg",
+        ["macros"],
+            [
+                "styled-components",
+                {
+                    "ssr": true,
+                    "displayName": true,
+                    "preprocess": false
+                }
+            ],
+      ],
+}
