@@ -1,7 +1,6 @@
 {
   "name": "@bcdapps/admin",
   "version": "1.0.0",
-  "sideEffects": false,
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.10.5",

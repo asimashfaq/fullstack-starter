@@ -5,6 +5,7 @@ import {
   GetStaticProps,
 } from 'next';
 import Head from 'next/head';
+import { useDispatch } from 'react-redux';
 import {
   getI18nStaticPaths,
   withI18n,
@@ -13,10 +14,12 @@ import {
   GetI18nQuery,
   useI18n,
 } from '../../utils/i18n';
+ import {Button} from '@bcdapps/ui'
 import * as S from '../../components/styles';
 
 const Page: NextPage = () => {
   const { translations } = useI18n('/pages/[language]/index');
+
   return (
     <>
       <Head>
@@ -44,6 +47,7 @@ const Page: NextPage = () => {
               href="/"
             >
               Tailwind Starter Kit
+              <Button>Click me</Button>
             </a>
             {/* User */}
             {/* <ul className="md:hidden items-center flex flex-wrap list-none">
