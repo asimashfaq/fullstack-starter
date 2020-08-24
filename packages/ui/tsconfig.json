@@ -4,9 +4,15 @@
     "noImplicitThis": false,
     "target": "es2017",
     "baseUrl": "src",
+    "jsx": "react",
+    "declaration": true,
     "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
     "strict": true,
+    "moduleResolution": "node",
+    "noEmit": false
+
   },
   "include": ["src"]
 }
