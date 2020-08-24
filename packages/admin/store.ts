@@ -7,14 +7,14 @@ import { createLogger } from 'redux-logger';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { ActionType } from 'typesafe-actions';
 
-// #TODO: Add your reducers here
-export const rootReducer = combineReducers({});
+export const rootReducer = combineReducers({
+  // router: connectRouter(history),
+});
 
-// #TODO: Add your actions here
 type finalActions = ActionType<any>;
 
 export type RootState = ReturnType<typeof rootReducer>;
-// #TODO: Add your epics here
+// Configure epics
 const epics = combineEpics();
 const epicMiddleware = createEpicMiddleware<
   finalActions, // input actions
@@ -23,7 +23,13 @@ const epicMiddleware = createEpicMiddleware<
 >();
 
 const Logger = createLogger();
-const middleware = [...getDefaultMiddleware(), Logger, epicMiddleware];
+// configure middlewares
+const middleware = [
+  ...getDefaultMiddleware(),
+  Logger,
+  // routerMiddleware(history),
+  epicMiddleware,
+];
 
 function configureAppStore(initialState?: any) {
   // create store
@@ -36,6 +42,5 @@ function configureAppStore(initialState?: any) {
 }
 
 export const store = configureAppStore();
-// #TODO: Remove comment after adding epics
 //epicMiddleware.run(epics);
 export type AppDispatch = typeof store.dispatch;
