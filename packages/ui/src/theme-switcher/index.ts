@@ -1,0 +1,1 @@
+export { ThemeSwitchButton } from './ThemeSwitcher';
