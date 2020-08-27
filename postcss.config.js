@@ -1,5 +1,6 @@
 const tailwindcss = require('tailwindcss');
 const path = require('path');
+
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDev = NODE_ENV === 'development';
 
@@ -13,7 +14,12 @@ module.exports = {
     //   content: ['./**/*.tsx', './**/*.js'],
     //   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     // }),
-    require('postcss-preset-env'),
+    require('postcss-preset-env')({
+      stage: 1,
+      features: {
+        'focus-within-pseudo-class': false,
+      },
+    }),
     require('cssnano'),
   ],
 };
