@@ -1,12 +1,10 @@
 /* eslint-disable no-empty */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
+import { createEverLogger } from '@bcdapps/common_backend';
+import exitHook from 'async-exit-hook';
 import 'dotenv/config';
 import 'reflect-metadata';
-
-import exitHook from 'async-exit-hook';
-
 import { AppDispatcher } from './dispatcher';
-import { createEverLogger } from './helpers/Log';
 
 const log = createEverLogger({ name: 'uncaught' });
 
@@ -15,18 +13,18 @@ const dispatcher = new AppDispatcher();
 dispatcher
   .dispatch()
   .then(() => log.info('Everything up running'))
-  .catch((e) => {
+  .catch(e => {
     log.error(e.message, e.stack);
     process.exit(1);
   });
 
-exitHook((callback) => {
+exitHook(callback => {
   void dispatcher.shutdown().then(() => {
     log.info('Graceful shutdown the server');
     callback();
   });
 });
-process.on('uncaughtException', (err) => {
+process.on('uncaughtException', err => {
   try {
     log.error(err, 'Caught exception: ' + err);
   } catch (logWritingErr) {
@@ -39,7 +37,7 @@ process.on('uncaughtException', (err) => {
   console.error(err);
 });
 
-process.on('unhandledRejection', (err) => {
+process.on('unhandledRejection', err => {
   try {
     log.error(err, 'Uncaught rejection: ' + err);
   } catch (logWritingErr) {

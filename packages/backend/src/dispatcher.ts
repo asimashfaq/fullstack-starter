@@ -1,3 +1,4 @@
+import { env } from '@bcdapps/common_backend';
 import {
   INestApplicationContext,
   Logger,
@@ -15,7 +16,6 @@ import FastifyCompress from 'fastify-compress';
 import FastifyHelmet from 'fastify-helmet';
 import { join } from 'path';
 import { AppModule } from './app.module';
-import { env } from './env';
 
 /**
  * Start and Stop the Application

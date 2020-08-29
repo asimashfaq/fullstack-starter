@@ -1,6 +1,5 @@
+import { ConfigService } from '@bcdapps/common_backend';
 import { Module } from '@nestjs/common';
-
-import { ConfigService } from './config.service';
 
 @Module({
   providers: [
