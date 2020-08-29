@@ -1,5 +1,6 @@
 import React from 'react';
 import LogoutIconSvg from './assets/logout.svg';
-export const LogoutIcon: React.FC = React.memo((props: any) => {
+import { IconProps } from 'types';
+export const LogoutIcon: React.FC<IconProps> = React.memo((props) => {
   return <LogoutIconSvg {...props}/>;
 });

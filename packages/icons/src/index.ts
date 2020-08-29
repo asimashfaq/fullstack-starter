@@ -1,7 +1,12 @@
-export { HomeIcon } from './HomeIcon';
-export { MoonIcon } from './MoonIcon';
-export { SunIcon } from './SunIcon';
-export { FormsIcon } from './FormsIcon';
-export { PageIcon } from './PageIcon';
 export { ChartsIcon } from './ChartsIcon';
+export { FormsIcon } from './FormsIcon';
+export { HomeIcon } from './HomeIcon';
 export { LogoutIcon } from './LogoutIcon';
+export { MenuIcon } from './MenuIcon';
+export { MoonIcon } from './MoonIcon';
+export { PageIcon } from './PageIcon';
+export { ProfileIcon } from './ProfileIcon';
+export { SearchIcon } from './SearchIcon';
+export { SettingsIcon } from './SettingsIcon';
+export { SunIcon } from './SunIcon';
+export * from './types';

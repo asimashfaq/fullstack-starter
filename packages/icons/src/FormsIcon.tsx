@@ -1,5 +1,6 @@
 import React from 'react';
 import FormsIconSvg from './assets/forms.svg';
-export const FormsIcon: React.FC = React.memo((props: any) => {
+import { IconProps } from 'types';
+export const FormsIcon: React.FC<IconProps> = React.memo((props) => {
   return <FormsIconSvg {...props} />;
 });
