@@ -11,6 +11,6 @@ export class ServicesApp {
   ) {}
   async start(): Promise<void> {
     // TODO: Uncomment  in dev or production mode
-    await this.dbservice.connectDB();
+    // await this.dbservice.connectDB();
   }
 }
