@@ -13,13 +13,15 @@
     ]
   },
   "scripts": {
-    "clean": "rimraf node_modules && rimraf packages/**/node_modules",
+    "clean": "rm -rf node_modules && rm -rf packages/**/node_modules",
     "commit": "git-cz",
     "init:commitizen": "commitizen init cz-ccgls  --yarn --dev --exact --ignore-workspace-root-check --force",
     "lint": "eslint . --ext '*/**/*.{js,ts,tsx}'",
     "lint:fix": "eslint --fix . --ext '*/**/*.{js,ts,tsx}'",
     "format": "cross-env NODE_ENV=development NODE_OPTIONS=--max_old_space_size=4096 prettier **/**/*.{js,ts,tsx} --ignore-path ./.prettierignore --write && git status",
     "build:frontend": "yarn build:icons && yarn build:ui",
+    "build:backend": "lerna run --scope @bcdapps/backend build",
+    "build:admin": "lerna run --scope @bcdapps/admin build",
     "build:ui": "lerna run --scope @bcdapps/ui build",
     "build:icons": "lerna run --scope @bcdapps/icons build",
     "storybook": "start-storybook -p 6006",
