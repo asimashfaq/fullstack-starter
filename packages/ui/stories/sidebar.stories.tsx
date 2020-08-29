@@ -44,7 +44,10 @@ export const CustomTitleUsage = () => {
 
   return (
     <MemoryRouter>
-      <Sidebar title={{ render: () => <h3>{label}</h3> }} menuItems={routes as IMenuItemProps[]} />
+      <Sidebar
+        title={{ render: () => <h3>{label}</h3> }}
+        menuItems={routes as IMenuItemProps[]}
+      />
     </MemoryRouter>
   );
 };
@@ -54,14 +57,26 @@ export const Knobs = () => {
 
   return (
     <MemoryRouter>
-      <Sidebar title={label} menuItems={
-        [
-          { icon: select('Icon-1', iconLists, 'HomeIcon'), name: text('Label-1', 'Dashboard'), path: './' },
-          { icon: select('Icon-2', iconLists, 'FormsIcon'), name: text('Label-2', 'Forms'), path: './' },
-          { icon: select('Icon-3', iconLists, 'ChartsIcon'), name: text('Label-3', 'Charts'), path: './' }
-
-        ]
-        } />
+      <Sidebar
+        title={label}
+        menuItems={[
+          {
+            icon: select('Icon-1', iconLists, 'HomeIcon'),
+            name: text('Label-1', 'Dashboard'),
+            path: './',
+          },
+          {
+            icon: select('Icon-2', iconLists, 'FormsIcon'),
+            name: text('Label-2', 'Forms'),
+            path: './',
+          },
+          {
+            icon: select('Icon-3', iconLists, 'ChartsIcon'),
+            name: text('Label-3', 'Charts'),
+            path: './',
+          },
+        ]}
+      />
     </MemoryRouter>
   );
 };
