@@ -1,2 +1,2 @@
-export * from './button';
+export * from './components/button';
 export * from './theme-switcher';
