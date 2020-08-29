@@ -1,5 +1,20 @@
 syntax = "proto3";
 package rpc;
 
+import "rpc/subscription_plan.proto";
+
+service SubscriptionPlanService {
+
+  rpc FindAll(Empty) returns (subscription_plan.SubscriptionPlanResponse) {}
+
+  rpc FindOne(subscription_plan.SubscriptionPlanFilter) returns (subscription_plan.SubscriptionPlan){}
+
+  rpc Create(subscription_plan.SubscriptionPlanInput) returns (subscription_plan.SubscriptionPlan){}
+
+  rpc Update(subscription_plan.UpdateSubscriptionPlanRequest) returns (subscription_plan.UpdateSubscriptionPlanResponse){}
+
+  rpc Delete(subscription_plan.SubscriptionPlanFilter) returns (subscription_plan.DeleteSubscriptionPlanResponse){}
+
+}
 message Empty {}
 

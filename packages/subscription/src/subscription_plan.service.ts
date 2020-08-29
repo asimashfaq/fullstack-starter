@@ -127,7 +127,6 @@ export class SubscriptionPlanService
     where?: SubscriptionPlanFilter,
   ): Promise<SubscriptionPlanResponse> {
     // Validate the Input
-
     let edges: SubscriptionPlan[] = [] as SubscriptionPlan[];
     let count: number = 0; // Rows counts
     let recordLimit = 10; // Pagination Limit
@@ -200,6 +199,7 @@ export class SubscriptionPlanService
     }
     throw NotFoundError(ErrorGenerator.NotFound('Subscription Plan'));
   }
+
   count(where?: SubscriptionPlanFilter): Promise<number> {
     throw new Error('Method not implemented.');
   }

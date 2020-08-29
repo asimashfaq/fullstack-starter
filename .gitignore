@@ -4,3 +4,5 @@ dist
 .next
 build
 base
+free.bcdapps.client.certificate
+.env

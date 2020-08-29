@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package subscription_plan;
+
+message SubscriptionPlanInput {
+  enum SubscriptionDuration {
+    DAY = 0;
+    WEEK = 1;
+    MONTH = 2;
+    YEAR = 3;
+  }
+
+  string name = 1;
+  string code = 2;
+  string description = 3;
+  int32 price = 4;
+  int32 extra_fee = 5;
+  int32 invoice_period = 6;
+  SubscriptionDuration invoice_duration = 7;
+  int32 trail_period = 8;
+  SubscriptionDuration trail_duration = 9;
+}
+
+
+message SubscriptionPlan {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  string slug = 4;
+  string description = 5;
+  int32 price = 6;
+  int32 extra_fee = 7;
+  int32 invoice_period = 8;
+  string invoice_duration = 9;
+  int32 trail_period = 10;
+  string trail_duration = 11;
+
+}
+message DeleteSubscriptionPlanResponse {
+  int32 modified = 1;
+  repeated SubscriptionPlan edges = 2;
+}
+
+message UpdateSubscriptionPlanRequest {
+  SubscriptionPlanInput payload = 1;
+  SubscriptionPlanFilter where = 2;
+}
+
+message UpdateSubscriptionPlanResponse {
+  int32 modified = 1;
+  repeated SubscriptionPlan edges = 2;
+}
+
+message SubscriptionPlanResponse {
+  int32 page_info = 1;
+  repeated SubscriptionPlan edges = 2;
+}
+message Pagination {
+  int32 total = 1;
+  bool has_more =2;
+  int32 limit =3;
+  int32 skip = 4;
+}
+message SubscriptionPlanFilter {
+  string id = 1;
+}

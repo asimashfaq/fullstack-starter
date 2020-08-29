@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import {
   createEverLogger,
+  env,
   IDatabaseRepo,
   IService,
 } from '@bcdapps/common_backend';
@@ -10,7 +11,6 @@ import { injectable } from 'inversify';
 import _ from 'lodash';
 import { join } from 'path';
 import { DocumentStore, IDocumentSession } from 'ravendb';
-import { env } from '../env';
 import { SubscriptionPlans } from '../model/subscription_plan.model';
 
 /**
@@ -28,7 +28,8 @@ export class DatabaseService implements IService, IDatabaseRepo {
   protected db: IDocumentSession;
   private log = createEverLogger({ name: 'main' });
   constructor() {
-    void this.connectDB();
+    // #TODO : Should not assign here
+    // void this.connectDB();
   }
   /**
    * Create record in database
@@ -94,7 +95,7 @@ export class DatabaseService implements IService, IDatabaseRepo {
     await this.connectDB();
     const collectionName: string = where?.collection_name;
     delete where?.collection_name;
-    if (_.isEmpty(where)) {
+    if (_.omit(where, _.isUndefined)) {
       return [
         ((await this.db.advanced.loadStartingWith(`${collectionName}/`, {
           start: skip,
@@ -176,8 +177,14 @@ export class DatabaseService implements IService, IDatabaseRepo {
         return (this.db as unknown) as any;
       }
       this.log.info('Trying to connect to database');
+      this.log.info(
+        `DB certs: ${(process.cwd(),
+        join(process.cwd() + '../../../', env.DB_CERTS))}`,
+      );
       const authOptions = {
-        certificate: fs.readFileSync(join(process.cwd(), env.DB_CERTS)),
+        certificate: fs.readFileSync(
+          join(process.cwd() + '../../../', env.DB_CERTS),
+        ),
         type: 'pfx',
       };
       const store = new DocumentStore(
