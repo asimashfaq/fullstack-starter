@@ -1,5 +1,6 @@
 import React from 'react';
 import PageIconSvg from './assets/template.svg';
-export const PageIcon: React.FC = React.memo((props: any) => {
+import { IconProps } from 'types';
+export const PageIcon: React.FC<IconProps> = React.memo((props) => {
   return <PageIconSvg {...props}/>;
 });
