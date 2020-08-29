@@ -1,5 +1,4 @@
 import { injectable } from 'inversify';
-
 import { Env, env, Environments } from '../env';
 
 @injectable()
