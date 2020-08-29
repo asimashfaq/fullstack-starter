@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { ButtonProps, ButtonDesignProps } from './types';
 import { LinkButton, StandardButton } from './variants';
-import '../style.css';
+import '../../style.css';
 export const Button: React.FC<ButtonProps & ButtonDesignProps> = ({
   className,
   to,
