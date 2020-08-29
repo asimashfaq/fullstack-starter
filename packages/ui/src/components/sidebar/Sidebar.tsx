@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../style.css';
 import { SidebarContent } from './internals/SidebarContent';
-import { ISideBarProps, isRenderer } from './types';
+import { ISideBarProps } from './types';
+import { isRenderer } from '../../types';
 
 export const Sidebar: React.FC<ISideBarProps> = ({ menuItems, title,...props }) => {
   return (
