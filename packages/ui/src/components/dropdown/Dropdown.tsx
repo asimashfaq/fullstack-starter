@@ -5,14 +5,23 @@ import { IDropdownProps } from './types';
 import { IMenuItemProps } from '../sidebar/types';
 import { Icon } from '../icon';
 
-export const Dropdown: React.FC<IDropdownProps> = ({ placement = 'bottom-end', title, menuItems, ...props }) => {
+export const Dropdown: React.FC<IDropdownProps> = ({
+  placement = 'bottom-end',
+  title,
+  menuItems,
+  ...props
+}) => {
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef<HTMLButtonElement>();
   const popoverDropdownRef = React.createRef<HTMLUListElement>();
   const openDropdownPopover = () => {
-    new Popper(btnDropdownRef.current as HTMLButtonElement, popoverDropdownRef.current as HTMLUListElement, {
-      placement: placement,
-    });
+    new Popper(
+      btnDropdownRef.current as HTMLButtonElement,
+      popoverDropdownRef.current as HTMLUListElement,
+      {
+        placement: placement,
+      },
+    );
     setDropdownPopoverShow(true);
   };
   const closeDropdownPopover = () => {

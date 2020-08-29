@@ -35,7 +35,7 @@ export const BasicUsage = () => {
                   icon: 'LogoutIcon',
                   name: 'Logout',
                   path: '/logout',
-                }
+                },
               ],
             } as IDropdownProps
           }
@@ -49,7 +49,7 @@ export const WithNoMenu = () => {
   return (
     <ThemeProvider>
       <MemoryRouter>
-        <Header/>
+        <Header />
       </MemoryRouter>
     </ThemeProvider>
   );

@@ -20,7 +20,10 @@ export const Header: React.FC<HeaderProps> = ({ ...props }) => {
             </li>
             {props.rightDropdown ? (
               <li>
-                <Dropdown title={props.rightDropdown.title} menuItems={props.rightDropdown.menuItems} />
+                <Dropdown
+                  title={props.rightDropdown.title}
+                  menuItems={props.rightDropdown.menuItems}
+                />
               </li>
             ) : (
               <></>
