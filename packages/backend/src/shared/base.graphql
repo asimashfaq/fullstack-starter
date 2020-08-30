@@ -1,0 +1,17 @@
+scalar date
+
+scalar Date
+
+type Pagination {
+    total: Int
+    has_more: Boolean
+    limit: Int
+    skip: Int
+}
+
+scalar JSON
+scalar JSONObject
+schema {
+	query: Query
+	mutation: Mutation
+}

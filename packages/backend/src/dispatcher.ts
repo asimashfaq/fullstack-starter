@@ -1,4 +1,4 @@
-import { env } from '@bcdapps/common_backend';
+import { ConfigService } from '@bcdapps/common_backend';
 import {
   INestApplicationContext,
   Logger,
@@ -6,14 +6,9 @@ import {
 } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { Transport } from '@nestjs/microservices';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
 import { useContainer } from 'class-validator';
 import cors from 'cors';
-import FastifyCompress from 'fastify-compress';
-import FastifyHelmet from 'fastify-helmet';
+import { FlubErrorHandler } from 'nestjs-flub';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
@@ -25,6 +20,8 @@ import { AppModule } from './app.module';
 export class AppDispatcher {
   private app: any;
   private logger = new Logger(AppDispatcher.name);
+  private configService: ConfigService;
+
   /**
    * Trigger the server
    * @returns {Promise<void>}
@@ -61,15 +58,16 @@ export class AppDispatcher {
    * @memberof AppDispatcher
    */
   private async createServer(): Promise<void> {
-    this.app = await NestFactory.create<NestFastifyApplication>(
-      AppModule,
-      new FastifyAdapter({ logger: false }),
-    );
+    this.app = await NestFactory.create(AppModule);
     useContainer(this.app.select(AppModule), { fallbackOnErrors: true });
-    this.app.register(FastifyHelmet);
     this.app.use(cors());
-    this.app.register(FastifyCompress, { global: false });
+    this.configService = this.app.get(ConfigService);
 
+    if (this.configService.get('NODE_ENV') !== 'production') {
+      this.app.useGlobalFilters(
+        new FlubErrorHandler({ theme: 'dark', quote: true }),
+      );
+    }
     this.app.useGlobalPipes(new ValidationPipe());
     const protoDir = join(process.cwd(), 'protos');
     // # TODO: Implement secure connection
@@ -110,10 +108,12 @@ export class AppDispatcher {
    * @memberof AppDispatcher
    */
   private async startServer(): Promise<void> {
-    const host = env.HOST;
-    const port = env.PORT;
+    const host = this.configService.get('HOST');
+    const port = this.configService.get('PORT');
     await this.app.listen(port, host);
-    this.logger.log(`😎 Fastify Server is listening http://${host}:${port} 😎`);
+    this.logger.log(
+      `😎 Graphql Server is listening http://${host}:${port}/graphql 😎`,
+    );
     this.logger.log(`😎 Grpc Server is listening http://${host}:5000 😎`);
   }
 }

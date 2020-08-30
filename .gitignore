@@ -6,3 +6,4 @@ build
 base
 free.bcdapps.client.certificate
 .env
+.vscode

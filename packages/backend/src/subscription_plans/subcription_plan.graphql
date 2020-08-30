@@ -1,0 +1,57 @@
+enum SubscriptionDuration{
+    DAY
+    WEEK
+    MONTH
+    YEAR
+}
+input SubscriptionPlanInput {
+    name: String!
+    code: String!
+    description: String
+    price: Int!
+    extra_fee: Int
+    invoice_period: Int!
+    invoice_duration: SubscriptionDuration!
+    trail_period: Int!
+    trail_duration: SubscriptionDuration!
+}
+type SubscriptionPlan {
+    id: String
+    name: String
+    code: String
+    slug: String
+    description: String
+    price: Int
+    extra_fee: Int
+    invoice_period: Int
+    invoice_duration: SubscriptionDuration
+    trail_period: Int
+    trail_duration: SubscriptionDuration
+}
+type DeleteSubscriptionPlanResponse {
+    modified: Int
+    edges: [SubscriptionPlan]
+}
+input SubscriptionPlanFilter {
+    id: String
+}
+
+type UpdateSubscriptionPlanResponse {
+    modified: Int
+    edges: [SubscriptionPlan]
+}
+type SubscriptionPlanResponse {
+    page_info: Pagination
+    edges: [SubscriptionPlan]
+
+}
+
+type Query {
+    find_all_subscription_plans: SubscriptionPlanResponse
+    find_one_subscription_plan(where: SubscriptionPlanFilter): SubscriptionPlan
+}
+type Mutation{
+    createSubscriptionPlan(payload:SubscriptionPlanInput!) : SubscriptionPlan
+    updateSubscriptionPlan( payload: SubscriptionPlanInput!,where: SubscriptionPlanFilter!): UpdateSubscriptionPlanResponse
+    DeleteSubscriptionPlanResponse(where: SubscriptionPlanFilter!):DeleteSubscriptionPlanResponse
+}
