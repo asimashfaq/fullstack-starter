@@ -1,0 +1,13 @@
+diff --git a/node_modules/nestjs-flub/dist/flub-error-handler.js b/node_modules/nestjs-flub/dist/flub-error-handler.js
+index 50dc711..1ed4ed9 100644
+--- a/node_modules/nestjs-flub/dist/flub-error-handler.js
++++ b/node_modules/nestjs-flub/dist/flub-error-handler.js
+@@ -22,7 +22,7 @@ let FlubErrorHandler = class FlubErrorHandler {
+             .then(data => {
+             const ctx = host.switchToHttp();
+             const response = ctx.getResponse();
+-            response.status(500).send(data);
++            response.status(500).type('text/html').send(data);
+         })
+             .catch(e => {
+             common_2.Logger.error(e.message, e.context);

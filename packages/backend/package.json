@@ -10,26 +10,22 @@
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main"
+    "start:prod": "node dist/main",
+    "gen:typings": "ts-node src/generate-typings.ts"
   },
   "dependencies": {
-    "@bcdapps/subscription": "1.0.0",
     "@bcdapps/common_backend": "1.0.0",
-
+    "@bcdapps/subscription": "1.0.0",
     "@grpc/proto-loader": "^0.5.5",
-    "@nestjs/common": "^7.1.1",
     "@nestjs/config": "^0.5.0",
-    "@nestjs/core": "^7.1.1",
     "@nestjs/microservices": "^7.4.2",
     "@nestjs/platform-express": "^7.1.1",
-    "@nestjs/platform-fastify": "^7.2.0",
     "@types/yup": "^0.29.3",
     "async-exit-hook": "^2.0.1",
     "bunyan": "^1.8.14",
     "bunyan-prettystream": "^0.1.3",
     "class-transformer": "^0.3.1",
-    "fastify-compress": "^2.0.1",
-    "fastify-helmet": "^3.0.2",
+    "graphql-type-json": "^0.3.2",
     "grpc": "^1.24.3",
     "http-json-errors": "^1.2.8",
     "inversify": "^5.0.1",
@@ -38,6 +34,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^7.2.0",
+    "@nestjs/graphql": "^7.6.0",
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.1.1",
     "@types/bunyan": "^1.8.6",
@@ -46,6 +43,7 @@
     "class-validator": "^0.12.2",
     "envalid": "^6.0.2",
     "grpc-tools": "^1.9.1",
+    "nestjs-flub": "^0.2.0",
     "protobufjs": "^6.10.1"
   }
 }
