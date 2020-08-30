@@ -6,10 +6,10 @@ import GraphQLJSON, { GraphQLJSONObject } from 'graphql-type-json';
 import _ from 'lodash';
 import { join } from 'path';
 import { ServicesModule } from 'service/service.module';
-import { SubscriptionPlanModule } from 'subscription_plans/subscription_plan.module';
 import { ConfigModule } from './config/config.module';
 import { HttpExceptionFilter } from './shared/exception-filter/http-exception.filter';
 import { TimeoutInterceptor } from './shared/interceptor/timeout.interceptor';
+import { SubscriptionPlanModule } from './subscription_plans/subscription_plan.module';
 @Module({
   imports: [
     ConfigModule,

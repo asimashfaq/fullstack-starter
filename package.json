@@ -31,6 +31,7 @@
     "build:icons": "lerna run --scope @bcdapps/icons build",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook"
+
   },
   "config": {
     "commitizen": {

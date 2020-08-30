@@ -4,14 +4,15 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "precommit": "cross-env NODE_ENV=development NODE_OPTIONS=--max_old_space_size=4096 lint-staged",
+    "prebuild": "rimraf dist && yarn typecheck",
     "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "gen:typings": "ts-node src/generate-typings.ts"
+    "gen:typings": "ts-node src/generate-typings.ts",
+    "typecheck": "tsc -p tsconfig.json"
+
   },
   "dependencies": {
     "@bcdapps/common_backend": "1.0.0",
