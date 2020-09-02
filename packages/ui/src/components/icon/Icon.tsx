@@ -5,5 +5,5 @@ import { IconProps } from './types';
 
 export const Icon: React.FC<IconProps> = ({ icon, ...props }) => {
   const Icon = Icons[icon];
-  return <Icon {...props} />;
+  return <Icon {...props} ></Icon>;
 };

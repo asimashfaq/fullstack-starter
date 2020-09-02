@@ -195,7 +195,7 @@ export const getStaticProps: GetStaticProps<
         // The reason we're importing here, is because we can only
         // import node modules here and not in any other file.
         // More specifically, not outside of getStaticProps and getServerSideProps
-        fs: (await import('fs')).promises, // pass it to import all the translations
+        fs: (await import('promise-fs')), // pass it to import all the translations
       })),
     },
   };

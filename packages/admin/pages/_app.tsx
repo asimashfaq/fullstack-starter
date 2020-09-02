@@ -12,7 +12,7 @@ import {
   changeDocumentDirection,
 } from '../utils/i18n';
 import { store } from '../store';
-
+import '@bcdapps/ui/dist/style.css';
 const { allLanguages, defaultLanguage } = i18nConfig;
 
 class MyApp extends App<AppInitialProps> {

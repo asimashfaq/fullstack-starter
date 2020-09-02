@@ -1,4 +1,4 @@
-import { IMenuItemProps } from 'components/sidebar/types';
+import { IMenuItemProps } from '../sidebar/types';
 
 export type Placement =
   | 'auto'

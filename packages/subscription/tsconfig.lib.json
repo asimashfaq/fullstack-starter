@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "baseUrl": "src",
+    "rootDir": ".",
+    "allowSyntheticDefaultImports":true,
+    "experimentalDecorators":true,
+    "declaration": true,
+    "types": ["node"]
+  },
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
+}

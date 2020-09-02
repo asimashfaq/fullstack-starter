@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/tslint/config */
-import { configBinding, ServiceSymbol } from '@bcdapps/common_backend';
+import { configBinding, ServiceSymbol } from '@bcdapps/common-backend';
 import { bindingsSubscription } from '@bcdapps/subscription';
 import { Container, ContainerModule, interfaces } from 'inversify';
 import _ from 'lodash';

@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps<GetI18nProps> = async ({
   res,
 }) => {
   const preferredLanguage = getI18nCookieFromUnparsedCookieHeader(
-    req.headers.cookie || '',
+    req.headers.cookie || '' as any,
   );
 
   const acceptLanguageHeader =

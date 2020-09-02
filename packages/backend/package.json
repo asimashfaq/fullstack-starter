@@ -1,50 +1,8 @@
 {
   "name": "@bcdapps/backend",
-  "version": "1.0.0",
-  "private": true,
-  "license": "MIT",
-  "scripts": {
-    "prebuild": "rimraf dist && yarn typecheck",
-    "build": "nest build",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
-    "gen:typings": "ts-node src/generate-typings.ts",
-    "typecheck": "tsc -p tsconfig.json"
-
-  },
-  "dependencies": {
-    "@bcdapps/common_backend": "1.0.0",
-    "@bcdapps/subscription": "1.0.0",
-    "@grpc/proto-loader": "^0.5.5",
-    "@nestjs/config": "^0.5.0",
-    "@nestjs/microservices": "^7.4.2",
-    "@nestjs/platform-express": "^7.1.1",
-    "@types/yup": "^0.29.3",
-    "async-exit-hook": "^2.0.1",
-    "bunyan": "^1.8.14",
-    "bunyan-prettystream": "^0.1.3",
-    "class-transformer": "^0.3.1",
-    "graphql-type-json": "^0.3.2",
-    "grpc": "^1.24.3",
-    "http-json-errors": "^1.2.8",
-    "inversify": "^5.0.1",
-    "rxjs": "^6.5.5",
-    "yup": "^0.29.1"
-  },
-  "devDependencies": {
-    "@nestjs/cli": "^7.2.0",
-    "@nestjs/graphql": "^7.6.0",
-    "@nestjs/schematics": "^7.0.0",
-    "@nestjs/testing": "^7.1.1",
-    "@types/bunyan": "^1.8.6",
-    "@types/node": "^14.0.6",
-    "@types/supertest": "^2.0.9",
-    "class-validator": "^0.12.2",
-    "envalid": "^6.0.2",
-    "grpc-tools": "^1.9.1",
-    "nestjs-flub": "^0.2.0",
-    "protobufjs": "^6.10.1"
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public",
+    "directory": "../../dist/packages/backend"
   }
 }

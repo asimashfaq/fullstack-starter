@@ -1,4 +1,4 @@
-import { createEverLogger } from '@bcdapps/common_backend';
+import { createEverLogger } from '@bcdapps/common-backend';
 import { LoggerService } from '@nestjs/common/services/logger.service';
 
 const log = createEverLogger({ name: 'nestjs' });

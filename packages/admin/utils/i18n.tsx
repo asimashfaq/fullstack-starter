@@ -200,7 +200,7 @@ const loadAllTranslations = async (
 export const getI18nProps = async ({
   language,
   paths,
-  translationsDir = path.resolve('public/translations'),
+  translationsDir = path.resolve('packages/admin/public/translations'),
   fs,
 }: {
   language: AvailableLanguage;
@@ -209,6 +209,7 @@ export const getI18nProps = async ({
   fs?: any;
 }): Promise<GetI18nProps> => {
   const translations: Translations = {};
+  
   if (!paths) {
     // recurse over all existing translations
     const fullTranslations = await loadAllTranslations(

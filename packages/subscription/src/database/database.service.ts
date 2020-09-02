@@ -5,7 +5,7 @@ import {
   env,
   IDatabaseRepo,
   IService,
-} from '@bcdapps/common_backend';
+} from '@bcdapps/common-backend';
 import fs from 'fs';
 import { injectable } from 'inversify';
 import _ from 'lodash';
@@ -95,7 +95,7 @@ export class DatabaseService implements IService, IDatabaseRepo {
     await this.connectDB();
     const collectionName: string = where?.collection_name;
     delete where?.collection_name;
-    if (_.omit(where, _.isUndefined)) {
+    if (_.omit(where, _.isUndefined as any)) {
       return [
         ((await this.db.advanced.loadStartingWith(`${collectionName}/`, {
           start: skip,
@@ -178,8 +178,9 @@ export class DatabaseService implements IService, IDatabaseRepo {
       }
       this.log.info('Trying to connect to database');
       this.log.info(
-        `DB certs: ${(process.cwd(),
-        join(process.cwd() + '../../../', env.DB_CERTS))}`,
+        `DB certs: ${
+          (process.cwd(), join(process.cwd() + '../../../', env.DB_CERTS))
+        }`,
       );
       const authOptions = {
         certificate: fs.readFileSync(

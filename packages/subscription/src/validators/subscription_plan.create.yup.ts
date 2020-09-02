@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable no-invalid-this */
-import { ErrorGenerator } from '@bcdapps/common_backend';
+import { ErrorGenerator } from '@bcdapps/common-backend';
 import _ from 'lodash';
 import * as yup from 'yup';
 import { SubscriptionPlanErrorMessage } from '../message/error.message';

@@ -1,4 +1,4 @@
-import { createEverLogger } from '@bcdapps/common_backend';
+import { createEverLogger } from '@bcdapps/common-backend';
 import { inject, injectable } from 'inversify';
 import { DatabaseService } from './database/database.service';
 

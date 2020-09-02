@@ -1,14 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "noImplicitThis": false,
-    "target": "es2017",
-    "baseUrl": "src",
-    "declarationMap": true,
-    "outDir": "dist",
-    "strict": true,
-    "experimentalDecorators":true,
-    "noEmit": false
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions":{
+    "experimentalDecorators":true
   },
-  "include": ["src"],
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
 }

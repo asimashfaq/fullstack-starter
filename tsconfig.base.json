@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      // "@bcdapps/common-backend": ["packages/common-backend/src/index.ts"],
+      // "@bcdapps/subscription": ["packages/subscription/src/index.ts"],
+      // "@bcdapps/ui": ["packages/ui/src/index.ts"],
+      // "@bcdapps/icons": ["packages/icons/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+  "include": ["postcss.config.js", "tailwind.config.js"]
+}

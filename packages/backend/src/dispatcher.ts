@@ -1,4 +1,4 @@
-import { ConfigService } from '@bcdapps/common_backend';
+import { ConfigService } from '@bcdapps/common-backend';
 import {
   INestApplicationContext,
   Logger,

@@ -1,6 +1,6 @@
 /* eslint-disable no-empty */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import { createEverLogger } from '@bcdapps/common_backend';
+import { createEverLogger } from '@bcdapps/common-backend';
 import exitHook from 'async-exit-hook';
 import 'dotenv/config';
 import 'reflect-metadata';
