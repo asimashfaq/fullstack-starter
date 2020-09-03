@@ -62,6 +62,9 @@ module.exports = {
       'dark:hover',
       'dark:active',
     ],
+    zIndex: {
+      '60': '60',
+    },
     placeholderColor: ['focus', 'dark', 'dark:focus'],
     borderColor: ['focus', 'hover', 'dark', 'dark:focus', 'dark:hover'],
     divideColor: ['dark'],

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { ButtonProps } from '../button/types';
 import { ThemeContext } from '../../context/theme.context';
 import { Icon } from '../icon';
+import { Button } from '../button';
 
 export const ThemeSwitchButton: React.FC<ButtonProps> = ({
   children,
@@ -10,8 +11,7 @@ export const ThemeSwitchButton: React.FC<ButtonProps> = ({
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button
-      type="button"
+    <Button
       {...props}
       onClick={toggleTheme}
       className="p-2 border-2 rounded-md border-gray-600"
@@ -21,6 +21,6 @@ export const ThemeSwitchButton: React.FC<ButtonProps> = ({
       ) : (
         <Icon icon="MoonIcon" className="text-dark" aria-hidden="true" />
       )}
-    </button>
+    </Button>
   );
 };
