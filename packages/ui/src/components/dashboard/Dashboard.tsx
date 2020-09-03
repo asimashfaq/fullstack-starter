@@ -4,7 +4,7 @@ import { Header } from '../header';
 import { IMenuItemProps } from 'components/sidebar/types';
 import { IDropdownProps } from 'components/dropdown/types';
 
-export const Dashboard: React.FC = () => {
+export const Dashboard: React.FC = ({children}) => {
 
     const menuItems: IMenuItemProps[] = [
         {
@@ -27,7 +27,7 @@ export const Dashboard: React.FC = () => {
   return (
     <div className='flex h-screen sm:flex-col-reverse dark:bg-gray-800 relative justify-end'>
         <Sidebar menuItems={menuItems} />
-        <div className="flex flex-col w-full z-50">
+        <div className="flex flex-col w-full">
             <Header 
                 rightDropdown={
                     {
@@ -52,6 +52,9 @@ export const Dashboard: React.FC = () => {
                     } as IDropdownProps
                 }
            />
+           <div className="z-20">
+               {children}
+           </div>
         </div>
     </div>
   );
