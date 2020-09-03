@@ -31,7 +31,6 @@
     "build:icons": "lerna run --scope @bcdapps/icons build",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook"
-
   },
   "config": {
     "commitizen": {
@@ -67,6 +66,7 @@
     "@storybook/preset-create-react-app": "^3.1.4",
     "@storybook/react": "6.0.0-rc.13",
     "@storybook/storybook-deployer": "2.8.5",
+    "@types/promise-fs": "^2.1.0",
     "@types/react": "^16.9.46",
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",
@@ -99,6 +99,7 @@
     "postcss-preset-env": "^6.7.0",
     "postinstall-postinstall": "^2.1.0",
     "prettier": "^1.16.4",
+    "promise-fs": "^2.1.1",
     "react": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-scripts": "^3.4.3",
@@ -108,6 +109,7 @@
     "rimraf": "^3.0.2",
     "storybook-addon-performance": "0.11.0",
     "tailwindcss-multi-theme": "^1.0.3",
+    "tsdx": "^0.13.3",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.0.2"
   },
