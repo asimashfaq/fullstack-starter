@@ -5,6 +5,7 @@ import React from 'react';
 import Head from 'next/head';
 import App, { AppInitialProps } from 'next/app';
 import { Provider } from 'react-redux';
+import '@bcdapps/ui/dist/style.css'
 import i18nConfig from '../i18n.config';
 import {
   changeDocumentLanguage,
