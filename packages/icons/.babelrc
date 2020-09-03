@@ -1,0 +1,6 @@
+{
+    "presets": ["@nrwl/react/babel"],
+    "plugins": [
+      "inline-react-svg",
+      ["styled-components", { "pure": true, "ssr": true }]]
+  }
