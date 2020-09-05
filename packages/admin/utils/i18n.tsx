@@ -200,7 +200,7 @@ const loadAllTranslations = async (
 export const getI18nProps = async ({
   language,
   paths,
-  translationsDir = path.resolve('public/translations'),
+  translationsDir = path.resolve('packages/admin/public/translations'),
   fs,
 }: {
   language: AvailableLanguage;

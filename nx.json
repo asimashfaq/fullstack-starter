@@ -1,0 +1,67 @@
+{
+  "npmScope": "bcdapps",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "admin": {
+      "tags": []
+    },
+    "admin-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "admin"
+      ]
+    },
+    "ui": {
+      "tags": []
+    },
+    "common-backend": {
+      "tags": []
+    },
+    "backend": {
+      "tags": [],
+      "implicitDependencies": [
+        "common-backend",
+        "subscription"
+      ]
+    },
+    "subscription": {
+      "tags": [],
+      "implicitDependencies": [
+        "common-backend"
+      ]
+    },
+    "icons": {
+      "tags": []
+    }
+  },
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
+  }
+}
