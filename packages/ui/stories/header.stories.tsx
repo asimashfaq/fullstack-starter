@@ -5,7 +5,7 @@ import { Header } from '../src/components/header';
 import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from '../src/context/theme.context';
 import { IDropdownProps } from '../src/components/dropdown/types';
-import { IconProps } from '../src/components/icon/types';
+import { SidebarProvider } from '../src/context/sidebar.context';
 
 export default {
   title: 'Header',
@@ -14,43 +14,47 @@ export default {
 
 export const BasicUsage = () => {
   return (
-    <ThemeProvider>
-      <MemoryRouter>
-        <Header
-          rightDropdown={
-            {
-              title: 'Settings',
-              menuItems: [
-                {
-                  icon: 'ProfileIcon',
-                  name: 'Profile',
-                  path: '/me',
-                },
-                {
-                  icon: 'SettingsIcon',
-                  name: 'Settings',
-                  path: '/settings',
-                },
-                {
-                  icon: 'LogoutIcon',
-                  name: 'Logout',
-                  path: '/logout',
-                },
-              ],
-            } as IDropdownProps
-          }
-        />
-      </MemoryRouter>
-    </ThemeProvider>
+    <SidebarProvider>
+      <ThemeProvider>
+        <MemoryRouter>
+          <Header
+            rightDropdown={
+              {
+                title: 'Settings',
+                menuItems: [
+                  {
+                    icon: 'ProfileIcon',
+                    name: 'Profile',
+                    path: '/me',
+                  },
+                  {
+                    icon: 'SettingsIcon',
+                    name: 'Settings',
+                    path: '/settings',
+                  },
+                  {
+                    icon: 'LogoutIcon',
+                    name: 'Logout',
+                    path: '/logout',
+                  },
+                ],
+              } as IDropdownProps
+            }
+          />
+        </MemoryRouter>
+      </ThemeProvider>
+    </SidebarProvider>
   );
 };
 
 export const WithNoMenu = () => {
   return (
-    <ThemeProvider>
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>
-    </ThemeProvider>
+    <SidebarProvider>
+      <ThemeProvider>
+        <MemoryRouter>
+          <Header />
+        </MemoryRouter>
+      </ThemeProvider>
+    </SidebarProvider>
   );
 };

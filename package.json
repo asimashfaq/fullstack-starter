@@ -148,6 +148,7 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
+    "framer-motion": "^2.6.5",
     "tailwindcss": "^1.7.3"
   }
 }
