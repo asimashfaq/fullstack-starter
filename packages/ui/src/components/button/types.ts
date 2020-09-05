@@ -1,7 +1,10 @@
-import { ReactNode } from 'react';
+import { IconName } from '../icon/types';
 
 type ButtonType = 'success' | 'primary' | 'dark' | 'danger';
 
+export type ButtonHandler = {
+  result: (isSuccess: boolean) => void;
+};
 export interface ButtonDesignProps {
   rounded?: boolean;
   inverted?: boolean;
@@ -13,7 +16,8 @@ export interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   className?: string;
-  children?: ReactNode;
   color?: string;
   background?: string;
+  label: string;
+  icon?: IconName;
 }

@@ -1,9 +1,8 @@
 import React from 'react';
 import '../../style.css';
-import * as HIcons from 'react-icons/hi';
-import { IconProps } from './types';
+import { IconProps, IconList } from './types';
 
 export const Icon: React.FC<IconProps> = ({ icon, ...props }) => {
-  const Icon = HIcons[icon];
-  return <Icon {...props} />;
+  const _Icon = IconList[icon];
+  return <_Icon {...props} />;
 };
