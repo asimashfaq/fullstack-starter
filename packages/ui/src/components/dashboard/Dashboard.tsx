@@ -9,18 +9,18 @@ export const Dashboard: React.FC = ({children}) => {
     const menuItems: IMenuItemProps[] = [
         {
         path: '/app/dashboard',
-        icon: 'HomeIcon',
+        icon: 'HiOutlineHome',
         name: 'Dashboard',
         exact: true,
         },
         {
         path: '/app/forms',
-        icon: 'FormsIcon',
+        icon: 'HiOutlineNewspaper',
         name: 'Forms',
         },
         {
         path: '/app/charts',
-        icon: 'ChartsIcon',
+        icon: 'HiOutlineChartPie',
         name: 'Charts',
         },
     ];
@@ -34,17 +34,17 @@ export const Dashboard: React.FC = ({children}) => {
                         title: 'Settings',
                         menuItems: [
                             {
-                            icon: 'ProfileIcon',
+                            icon: 'HiOutlineUser',
                             name: 'Profile',
                             path: '/me',
                             },
                             {
-                            icon: 'SettingsIcon',
+                            icon: 'HiOutlineCog',
                             name: 'Settings',
                             path: '/settings',
                             },
                             {
-                            icon: 'LogoutIcon',
+                            icon: 'HiOutlineLogout',
                             name: 'Logout',
                             path: '/logout',
                             },

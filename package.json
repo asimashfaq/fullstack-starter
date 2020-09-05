@@ -50,8 +50,6 @@
     }
   },
   "devDependencies": {
-    "@bcdapps/common-backend": "1.0.0",
-    "@bcdapps/subscription": "1.0.0",
     "@babel/cli": "7.10.5",
     "@babel/core": "7.10.5",
     "@babel/plugin-proposal-class-properties": "7.10.4",
@@ -59,6 +57,8 @@
     "@babel/preset-react": "7.10.4",
     "@babel/preset-typescript": "7.10.4",
     "@babel/runtime": "7.10.5",
+    "@bcdapps/common-backend": "1.0.0",
+    "@bcdapps/subscription": "1.0.0",
     "@commitlint/config-conventional": "^9.1.2",
     "@nestjs/common": "^7.4.1",
     "@nestjs/core": "^7.4.1",
@@ -121,6 +121,7 @@
     "prettier": "^1.16.4",
     "promise-fs": "^2.1.1",
     "react": "^16.13.1",
+    "react-icons": "^3.11.0",
     "react-redux": "^7.2.1",
     "react-scripts": "^3.4.3",
     "redux-logger": "^3.0.6",

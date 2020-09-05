@@ -3,8 +3,7 @@ import { Button } from '../src/components/button';
 import { action } from '@storybook/addon-actions';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
-import { HomeIcon } from '@bcdapps/icons';
-
+import {Icon } from '../src/components/icon'
 export default {
   title: 'Button',
   decorators: [withKnobs, withInfo],
@@ -20,6 +19,8 @@ export const BasicUsage = () => {
 
 export const IconButton = () => {
   const label = text('Label', 'See now');
-  return <Button className={'shadow bg-gray-400 dark:bg-black text-black hover:bg-gray-100'} onClick={action('clicked')}><HomeIcon /> {label} </Button>;
+  return <Button className={'shadow bg-gray-400 dark:bg-black text-black hover:bg-gray-100'} 
+  onClick={action('clicked')}>
+    <Icon icon="HiHome" /> {label} </Button>;
 };
 

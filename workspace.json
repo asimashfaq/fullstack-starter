@@ -20,12 +20,10 @@
         "build2": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "next build"
-            ],
+            "commands": ["next build"],
             "parallel": false,
-            "cwd":"./packages/admin",
-            "color":true
+            "cwd": "./packages/admin",
+            "color": true
           }
         },
         "serve": {
@@ -151,7 +149,7 @@
             }
           }
         },
-        "build":{
+        "build": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
@@ -159,8 +157,8 @@
               "tsdx build --targe browser --format cjs,esm --tsconfig ./tsconfig.lib.json"
             ],
             "parallel": false,
-            "cwd":"./packages/ui",
-            "color":true
+            "cwd": "./packages/ui",
+            "color": true
           }
         }
       }
@@ -295,75 +293,6 @@
             "parallel": false,
             "cwd": "./packages/subscription",
             "color": true
-          }
-        }
-      }
-    },
-    "icons": {
-      "root": "packages/icons",
-      "sourceRoot": "packages/icons/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "packages/icons/tsconfig.lib.json",
-              "packages/icons/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!packages/icons/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "packages/icons/jest.config.js",
-            "tsConfig": "packages/icons/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              "rm -rf ./dist/packages/icons",
-              "tsdx build --targe browser --format cjs,esm --tsconfig ./tsconfig.lib.json"
-            ],
-            "parallel": false,
-            "cwd":"./packages/icons",
-            "color":true
-          }
-        },
-        "storybook": {
-          "builder": "@nrwl/storybook:storybook",
-          "options": {
-            "uiFramework": "@storybook/react",
-            "port": 4400,
-            "config": {
-              "configFolder": "packages/icons/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
-          }
-        },
-        "build-storybook": {
-          "builder": "@nrwl/storybook:build",
-          "options": {
-            "uiFramework": "@storybook/react",
-            "outputPath": "dist/storybook/icons",
-            "config": {
-              "configFolder": "packages/icons/.storybook"
-            }
-          },
-          "configurations": {
-            "ci": {
-              "quiet": true
-            }
           }
         }
       }

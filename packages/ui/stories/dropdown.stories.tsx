@@ -17,17 +17,17 @@ export const BasicUsage = () => {
         title="Settings"
         menuItems={[
           {
-            icon: 'ProfileIcon',
+            icon: 'HiOutlineUser',
             name: 'Profile',
             path: '/me',
           },
           {
-            icon: 'SettingsIcon',
+            icon: 'HiOutlineCog',
             name: 'Settings',
             path: '/settings',
           },
           {
-            icon: 'LogoutIcon',
+            icon: 'HiOutlineLogout',
             name: 'Logout',
             path: '/logout',
           },

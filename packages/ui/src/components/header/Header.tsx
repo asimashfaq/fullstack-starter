@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import '../../style.css';
-import { MenuIcon } from '@bcdapps/icons';
 import { Dropdown } from '../dropdown';
 import { Button } from '../button';
 import { ThemeSwitchButton } from '../theme-switcher';
 import { HeaderProps } from './types';
 import { SidebarContext } from '../../context/sidebar.context';
+import { Icon } from '../icon';
 
 export const Header: React.FC<HeaderProps> = ({ ...props }) => {
   const { toggleSidebar } = useContext(SidebarContext)
@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ ...props }) => {
       <header className="px-6 py-4 ">
         <div className="flex items-center justify-between mx-auto">
           <Button onClick={toggleSidebar} className="p-1 mr-5 -ml-1 bg-white hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray">
-            <MenuIcon className="dark:text-white" />
+            <Icon icon="HiOutlineMenu" className="dark:text-white" />
           </Button>
           <ul className="flex flex-row flex-1 space-x-6 justify-end items-center ">
             <li className="cursor-pointer">

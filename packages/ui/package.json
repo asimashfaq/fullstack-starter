@@ -17,7 +17,6 @@
     "build": "tsdx build --targe node --format cjs,esm --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@bcdapps/icons": "1.0.0",
     "classnames": "^2.2.6",
     "popper.js": "1.15.0"
   },
