@@ -19,7 +19,6 @@
     "init:commitizen": "commitizen init cz-ccgls  --yarn --dev --exact --ignore-workspace-root-check --force",
     "lint": "eslint . --ext '*/**/*.{js,ts,tsx}'",
     "lint:fix": "eslint --fix . --ext '*/**/*.{js,ts,tsx}'",
-    "format": "cross-env NODE_ENV=development NODE_OPTIONS=--max_old_space_size=4096 prettier **/**/*.{js,ts,tsx} --ignore-path ./.prettierignore --write && git status",
     "build:frontend": "yarn build:icons && yarn build:ui && yarn build:admin",
     "start:backend": "yarn build:common-backend && yarn build:subscription && yarn run:backend",
     "build:backend": "lerna run --scope @bcdapps/backend build",
@@ -27,16 +26,15 @@
     "build:subscription": "lerna run --scope @bcdapps/subscription build",
     "build:common-backend": "lerna run --scope @bcdapps/common-backend build",
     "build:admin": "lerna run --scope @bcdapps/admin build",
-    "build:ui": "lerna run --scope @bcdapps/ui build",
-    "build:icons": "lerna run --scope @bcdapps/icons build",
-    "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook",
     "nx": "nx",
     "start": "nx serve",
     "build": "nx build",
     "nxbuild:admin": "nx run admin:build",
-    "nxbuild:ui": "nx run ui:build",
-    "nxbuild:icons": "nx run icons:build"
+    "build:ui": "nx run ui:build",
+    "build:icons": "nx run icons:build",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check"
   },
   "config": {
     "commitizen": {
@@ -115,6 +113,7 @@
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
     "patch-package": "^6.2.2",
+    "perf_hooks": "^0.0.1",
     "postcss-easy-import": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "postinstall-postinstall": "^2.1.0",

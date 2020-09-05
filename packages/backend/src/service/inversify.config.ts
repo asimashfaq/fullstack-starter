@@ -13,7 +13,7 @@ const bindings = new ContainerModule((bind: interfaces.Bind) => {
       .inSingletonScope();
 
     bind<any>(ServiceSymbol).toFactory<any>(context =>
-      context.container.get<any>(Service),
+      context.container.get<any>(Service)
     );
   });
   bind<ServicesApp>(ServicesApp)

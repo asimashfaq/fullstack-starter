@@ -20,7 +20,11 @@ const ButtonWrapper = styled.div`
 const StandardButton: React.FC<ButtonProps> = ({ children, ...props }) => (
   <ButtonWrapper>
     <motion.div {...getAnimationProps()}>
-      <Button type="button" {...props} className={`flex items-center px-4 py-2 focus:outline-none ${props.className}`}>
+      <Button
+        type="button"
+        {...props}
+        className={`flex items-center px-4 py-2 focus:outline-none ${props.className}`}
+      >
         {children}
       </Button>
     </motion.div>

@@ -8,12 +8,15 @@ import { SidebarContext } from '../../context/sidebar.context';
 import { Icon } from '../icon';
 
 export const Header: React.FC<HeaderProps> = ({ ...props }) => {
-  const { toggleSidebar } = useContext(SidebarContext)
+  const { toggleSidebar } = useContext(SidebarContext);
   return (
     <div className="bg-white shadow-md dark:bg-gray-800 z-40">
       <header className="px-6 py-4 ">
         <div className="flex items-center justify-between mx-auto">
-          <Button onClick={toggleSidebar} className="p-1 mr-5 -ml-1 bg-white hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray">
+          <Button
+            onClick={toggleSidebar}
+            className="p-1 mr-5 -ml-1 bg-white hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray"
+          >
             <Icon icon="HiOutlineMenu" className="dark:text-white" />
           </Button>
           <ul className="flex flex-row flex-1 space-x-6 justify-end items-center ">

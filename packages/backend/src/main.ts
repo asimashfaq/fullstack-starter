@@ -26,7 +26,7 @@ exitHook(callback => {
 });
 process.on('uncaughtException', err => {
   try {
-    log.error(err, 'Caught exception: ' + err);
+    log.error(err, `Caught exception: ${err}`);
   } catch (logWritingErr) {
     try {
       console.error("Can't write to log!!!!!!");
@@ -39,7 +39,7 @@ process.on('uncaughtException', err => {
 
 process.on('unhandledRejection', err => {
   try {
-    log.error(err, 'Uncaught rejection: ' + err);
+    log.error(err, `Uncaught rejection: ${err}`);
   } catch (logWritingErr) {
     try {
       console.error("Can't write to log!!!!!!");

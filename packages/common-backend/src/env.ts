@@ -35,5 +35,5 @@ export const env: Env = cleanEnv(
       default: 'debug',
     }),
   },
-  { strict: true, dotEnvPath: __dirname + '/../../../../.env' },
+  { strict: true, dotEnvPath: `${__dirname}/../../../../.env` }
 );
