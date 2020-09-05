@@ -14,5 +14,6 @@ export interface ButtonProps {
   disabled?: boolean;
   className?: string;
   children?: ReactNode;
-  [key: string]: any;
+  color?: string;
+  background?: string;
 }

@@ -12,7 +12,10 @@ export default {
 
 export const BasicUsage = () => {
   const label = text('Label', 'See now');
-  return <Button className={'rounded-full shadow bg-gray-400 dark:bg-black text-black hover:bg-gray-100'} onClick={action('clicked')}> {label} </Button>;
+  return <Button
+  color="#000"
+  background="#FFF"
+  className={'rounded-full shadow bg-gray-400 dark:bg-black text-black hover:bg-gray-100'} onClick={action('clicked')}> {label} </Button>;
 };
 
 export const IconButton = () => {
@@ -20,16 +23,3 @@ export const IconButton = () => {
   return <Button className={'shadow bg-gray-400 dark:bg-black text-black hover:bg-gray-100'} onClick={action('clicked')}><HomeIcon /> {label} </Button>;
 };
 
-BasicUsage.story = {
-  parameters: {
-    info: {
-      inline: true,
-      header: false,
-      text: `
-    ~~~js
-    <Button>Click Here</Button>
-    ~~~
-  `,
-    },
-  },
-};
