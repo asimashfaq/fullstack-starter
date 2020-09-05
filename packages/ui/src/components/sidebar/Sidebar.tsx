@@ -32,9 +32,9 @@ export const Sidebar: React.FC<ISideBarProps> = ({
         initial={false}
         animate={isSidebarOpen ? "open" : "closed"}
         variants={sidebar}
-        className={'z-50 h-full'}
+        className={'absolute z-50 h-full mt-16'}
       >
-        <aside className={`flex  h-full box-border flex-shrink-0 w-64 border-r-2 border-gray-400 overflow-y-auto z-30 bg-white dark:bg-gray-800 dark:border-gray-800 dark:text-white ${isSidebarOpen ? 'block' : 'hidden'}`}>
+        <aside className={`flex h-full flex-shrink-0 w-64 overflow-y-auto z-30 bg-white dark:bg-gray-800 dark:text-white ${isSidebarOpen ? 'block' : 'hidden'}`}>
           <div className="py-4 w-full h-full">
             {isRenderer(title) ? (
               title.render(props)
