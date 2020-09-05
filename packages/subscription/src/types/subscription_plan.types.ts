@@ -4,7 +4,7 @@ import {
   IPagination,
   IResponseInfo,
   SortProperties,
-} from '@bcdapps/common_backend';
+} from '@bcdapps/common-backend';
 import { ISubscriptionPlan } from '../interfaces/subscription_plan.interface';
 
 export enum SubscriptionPlanDurationEnum {

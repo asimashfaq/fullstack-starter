@@ -21,11 +21,11 @@
     "lint:fix": "eslint --fix . --ext '*/**/*.{js,ts,tsx}'",
     "format": "cross-env NODE_ENV=development NODE_OPTIONS=--max_old_space_size=4096 prettier **/**/*.{js,ts,tsx} --ignore-path ./.prettierignore --write && git status",
     "build:frontend": "yarn build:icons && yarn build:ui && yarn build:admin",
-    "start:backend": "yarn build:common_backend && yarn build:subscription && yarn run:backend",
+    "start:backend": "yarn build:common-backend && yarn build:subscription && yarn run:backend",
     "build:backend": "lerna run --scope @bcdapps/backend build",
     "run:backend": "lerna run --scope @bcdapps/backend start",
     "build:subscription": "lerna run --scope @bcdapps/subscription build",
-    "build:common_backend": "lerna run --scope @bcdapps/common_backend build",
+    "build:common-backend": "lerna run --scope @bcdapps/common-backend build",
     "build:admin": "lerna run --scope @bcdapps/admin build",
     "build:ui": "lerna run --scope @bcdapps/ui build",
     "build:icons": "lerna run --scope @bcdapps/icons build",
@@ -50,6 +50,8 @@
     }
   },
   "devDependencies": {
+    "@bcdapps/common-backend": "1.0.0",
+    "@bcdapps/subscription": "1.0.0",
     "@babel/cli": "7.10.5",
     "@babel/core": "7.10.5",
     "@babel/plugin-proposal-class-properties": "7.10.4",

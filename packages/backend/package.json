@@ -15,7 +15,7 @@
 
   },
   "dependencies": {
-    "@bcdapps/common_backend": "1.0.0",
+    "@bcdapps/common-backend": "1.0.0",
     "@bcdapps/subscription": "1.0.0",
     "@grpc/proto-loader": "^0.5.5",
     "@nestjs/config": "^0.5.0",

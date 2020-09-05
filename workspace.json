@@ -166,8 +166,8 @@
       }
     },
     "common-backend": {
-      "root": "packages/common_backend",
-      "sourceRoot": "packages/common_backend/src",
+      "root": "packages/common-backend",
+      "sourceRoot": "packages/common-backend/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
@@ -176,17 +176,17 @@
           "options": {
             "linter": "eslint",
             "tsConfig": [
-              "packages/common_backend/tsconfig.lib.json",
-              "packages/common_backend/tsconfig.spec.json"
+              "packages/common-backend/tsconfig.lib.json",
+              "packages/common-backend/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!packages/common_backend/**/*"]
+            "exclude": ["**/node_modules/**", "!packages/common-backend/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "packages/common_backend/jest.config.js",
-            "tsConfig": "packages/common_backend/tsconfig.spec.json",
+            "jestConfig": "packages/common-backend/jest.config.js",
+            "tsConfig": "packages/common-backend/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },

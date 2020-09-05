@@ -8,7 +8,7 @@ import {
   IService,
   NotFoundError,
   ParseError,
-} from '@bcdapps/common_backend';
+} from '@bcdapps/common-backend';
 import { injectable } from 'inversify';
 import _ from 'lodash';
 import { DatabaseService } from './database/database.service';

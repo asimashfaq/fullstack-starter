@@ -5,7 +5,7 @@ import {
   env,
   IDatabaseRepo,
   IService,
-} from '@bcdapps/common_backend';
+} from '@bcdapps/common-backend';
 import fs from 'fs';
 import { injectable } from 'inversify';
 import _ from 'lodash';

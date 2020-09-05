@@ -1,4 +1,4 @@
-import { ServiceSymbol } from '@bcdapps/common_backend';
+import { ServiceSymbol } from '@bcdapps/common-backend';
 import { Global, Module } from '@nestjs/common';
 import { servicesContainer } from './inversify.config';
 

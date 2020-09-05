@@ -1,12 +1,12 @@
-import { ConfigService } from '@bcdapps/common_backend';
+import { ConfigService } from '@bcdapps/common-backend';
 import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { GraphQLModule } from '@nestjs/graphql';
 import GraphQLJSON, { GraphQLJSONObject } from 'graphql-type-json';
 import _ from 'lodash';
 import { join } from 'path';
-import { ServicesModule } from 'service/service.module';
 import { ConfigModule } from './config/config.module';
+import { ServicesModule } from './service/service.module';
 import { HttpExceptionFilter } from './shared/exception-filter/http-exception.filter';
 import { TimeoutInterceptor } from './shared/interceptor/timeout.interceptor';
 import { SubscriptionPlanModule } from './subscription_plans/subscription_plan.module';
@@ -19,7 +19,7 @@ import { SubscriptionPlanModule } from './subscription_plans/subscription_plan.m
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
         include: [],
-        typePaths: [join(process.cwd(), './src/**/**/*.graphql')],
+        typePaths: [join(process.cwd(), 'packages/backend/src/**/*.graphql')],
         installSubscriptionHandlers: true,
         context: ({ raw }) => ({ raw }),
         introspection: true,

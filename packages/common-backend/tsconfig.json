@@ -4,6 +4,7 @@
     "noImplicitThis": false,
     "target": "es2017",
     "baseUrl": "src",
+    "declaration":true ,
     "declarationMap": true,
     "outDir": "dist",
     "strict": true,
@@ -11,5 +12,12 @@
     "experimentalDecorators": true
   },
   "include": ["src"],
-
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
 }

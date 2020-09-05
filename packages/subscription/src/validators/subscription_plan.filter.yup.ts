@@ -1,4 +1,4 @@
-import { ErrorGenerator } from '@bcdapps/common_backend';
+import { ErrorGenerator } from '@bcdapps/common-backend';
 import * as yup from 'yup';
 import {
   SubscriptionPlanFilter,
