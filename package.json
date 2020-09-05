@@ -107,6 +107,7 @@
     "redux-observable": "^1.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
+    "rollup-plugin-postcss": "^3.1.8",
     "storybook-addon-performance": "0.11.0",
     "tailwindcss-multi-theme": "^1.0.3",
     "tsdx": "^0.13.3",
