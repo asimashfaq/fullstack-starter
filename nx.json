@@ -33,9 +33,7 @@
     },
     "admin-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "admin"
-      ]
+      "implicitDependencies": ["admin"]
     },
     "ui": {
       "tags": []
@@ -45,19 +43,11 @@
     },
     "backend": {
       "tags": [],
-      "implicitDependencies": [
-        "common-backend",
-        "subscription"
-      ]
+      "implicitDependencies": ["common-backend", "subscription"]
     },
     "subscription": {
       "tags": [],
-      "implicitDependencies": [
-        "common-backend"
-      ]
-    },
-    "icons": {
-      "tags": []
+      "implicitDependencies": ["common-backend"]
     }
   },
   "workspaceLayout": {

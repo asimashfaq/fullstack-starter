@@ -1,13 +1,6 @@
-import * as Icons from '@bcdapps/icons';
+import * as Icons from 'react-icons/hi';
 type Icons = keyof typeof Icons;
-const iconLists: Icons[] = [
-  'HomeIcon',
-  'MoonIcon',
-  'SunIcon',
-  'FormsIcon',
-  'PageIcon',
-  'ChartsIcon',
-  'LogoutIcon',
-];
+//@ts-ignore
+const iconLists: Icons[] = [...Icons];
 
 export { iconLists };

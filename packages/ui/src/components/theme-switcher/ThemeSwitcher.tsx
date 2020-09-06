@@ -17,9 +17,9 @@ export const ThemeSwitchButton: React.FC<ButtonProps> = ({
       className="p-2 border-2 rounded-md border-gray-600"
     >
       {theme === 'dark' ? (
-        <Icon icon="SunIcon" className="text-white" aria-hidden="true" />
+        <Icon icon="HiOutlineSun" className="text-white" aria-hidden="true" />
       ) : (
-        <Icon icon="MoonIcon" className="text-dark" aria-hidden="true" />
+        <Icon icon="HiOutlineMoon" className="text-dark" aria-hidden="true" />
       )}
     </Button>
   );

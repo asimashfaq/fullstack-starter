@@ -15,18 +15,18 @@ export default {
 const routes: IMenuItemProps[] = [
   {
     path: '/app/dashboard',
-    icon: 'HomeIcon',
+    icon: 'HiOutlineHome',
     name: 'Dashboard',
     exact: true,
   },
   {
     path: '/app/forms',
-    icon: 'FormsIcon',
+    icon: 'HiOutlineNewspaper',
     name: 'Forms',
   },
   {
     path: '/app/charts',
-    icon: 'ChartsIcon',
+    icon: 'HiOutlineChartPie',
     name: 'Charts',
   },
 ];
