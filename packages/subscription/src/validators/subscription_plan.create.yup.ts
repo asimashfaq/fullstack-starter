@@ -29,26 +29,26 @@ export const subscriptionPlanCreateSchema = yup
       .number()
       .min(
         1,
-        ErrorGenerator.MinValue<SubscriptionInputPayload>('invoice_period', 1)
+        ErrorGenerator.MinValue<SubscriptionInputPayload>('invoice_period', 1),
       )
       .max(
         31,
-        ErrorGenerator.MaxValue<SubscriptionInputPayload>('invoice_period', 31)
+        ErrorGenerator.MaxValue<SubscriptionInputPayload>('invoice_period', 31),
       )
       .required(
-        ErrorGenerator.Required<SubscriptionInputPayload>('invoice_period')
+        ErrorGenerator.Required<SubscriptionInputPayload>('invoice_period'),
       ),
     invoice_duration: yup
       .mixed<SubscriptionDuration>()
       .oneOf(Object.values(SubscriptionPlanDurationEnum))
       .required(
-        ErrorGenerator.Required<SubscriptionInputPayload>('invoice_duration')
+        ErrorGenerator.Required<SubscriptionInputPayload>('invoice_duration'),
       ),
     trail_period: yup
       .number()
       .min(
         1,
-        ErrorGenerator.MiniLength<SubscriptionInputPayload>('trail_period', 1)
+        ErrorGenerator.MiniLength<SubscriptionInputPayload>('trail_period', 1),
       )
       .max(31),
     trail_duration: yup
@@ -64,11 +64,11 @@ export const subscriptionPlanCreateSchema = yup
       .trim()
       .min(
         3,
-        ErrorGenerator.MiniLength<SubscriptionInputPayload>('description', 3)
+        ErrorGenerator.MiniLength<SubscriptionInputPayload>('description', 3),
       )
       .max(
         50,
-        ErrorGenerator.MaxLength<SubscriptionInputPayload>('description', 50)
+        ErrorGenerator.MaxLength<SubscriptionInputPayload>('description', 50),
       ),
   })
   .test(
@@ -94,7 +94,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_DAY,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.WEEK]:
             value.invoice_period <= 4
@@ -102,7 +102,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_WEEK,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.MONTH]:
             value.invoice_period <= 12
@@ -110,7 +110,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_MONTH,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.YEAR]:
             value.invoice_period <= 5
@@ -118,13 +118,13 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_YEAR,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
         };
         return isError[value.invoice_duration];
       }
       return false;
-    }
+    },
   )
   .test(
     'trail-period-duration',
@@ -149,7 +149,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_DAY,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.WEEK]:
             value.invoice_period <= 4
@@ -157,7 +157,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_WEEK,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.MONTH]:
             value.invoice_period <= 12
@@ -165,7 +165,7 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_MONTH,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
           [SubscriptionPlanDurationEnum.YEAR]:
             value.invoice_period <= 5
@@ -173,11 +173,11 @@ export const subscriptionPlanCreateSchema = yup
               : new yup.ValidationError(
                   SubscriptionPlanErrorMessage.INVOICE_PERIOD_DURATION_YEAR,
                   value.invoice_period,
-                  'invoice_period'
+                  'invoice_period',
                 ),
         };
         return isError[value.invoice_duration];
       }
       return true;
-    }
+    },
   );

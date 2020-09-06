@@ -15,13 +15,13 @@ export const bindingsSubscription = new ContainerModule(
         .inSingletonScope();
 
       bind<any>(ServiceSymbol).toFactory<any>(context =>
-        context.container.get<any>(Service)
+        context.container.get<any>(Service),
       );
     });
     bind<ServicesApp>(ServicesApp)
       .toSelf()
       .inSingletonScope();
-  }
+  },
 );
 
 const container = new Container();

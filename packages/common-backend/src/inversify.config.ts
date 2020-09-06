@@ -12,7 +12,7 @@ export const configBinding = new ContainerModule((bind: interfaces.Bind) => {
       .inSingletonScope();
 
     bind<any>(ServiceSymbol).toFactory<any>(context =>
-      context.container.get<any>(Service)
+      context.container.get<any>(Service),
     );
   });
 });
