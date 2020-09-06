@@ -130,6 +130,7 @@
     "rimraf": "^3.0.2",
     "rollup-plugin-postcss": "^3.1.8",
     "storybook-addon-performance": "0.11.0",
+    "styled-theming": "^2.2.0",
     "tailwindcss-multi-theme": "^1.0.3",
     "tsdx": "^0.13.3",
     "typesafe-actions": "^5.1.0",

@@ -1,23 +1,18 @@
 import { IconName } from '../icon/types';
 
-type ButtonType = 'success' | 'primary' | 'dark' | 'danger';
+type ButtonType = 'default' | 'primary' | 'success' | 'warning' | string;
 
 export type ButtonHandler = {
   result: (isSuccess: boolean) => void;
 };
-export interface ButtonDesignProps {
-  rounded?: boolean;
-  inverted?: boolean;
-  type?: ButtonType;
-}
 
 export interface ButtonProps {
   to?: string;
-  onClick?: () => void;
+  onClick?: (e) => void;
   disabled?: boolean;
   className?: string;
   color?: string;
-  background?: string;
   label: string;
   icon?: IconName;
+  variant?: ButtonType;
 }

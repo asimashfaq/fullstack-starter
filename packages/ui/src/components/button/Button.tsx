@@ -1,88 +1,130 @@
 import React, { useState, useImperativeHandle } from 'react';
 import { ButtonProps, ButtonHandler } from './types';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 import { useUpdateEffect } from 'ahooks';
-
+import * as BnStyles from './style';
 import { Icon } from '../icon';
 
 /* ------------------------------- animations ------------------------------- */
 
-function getAnimationProps() {
-  return {
-    whileTap: {
-      scale: 0.85,
-    },
-  };
-}
+const tapAnimation = {
+  tap: {
+    scale: 0.85,
+  },
+};
 const spinTransition = {
   loop: Infinity,
-  ease: "linear",
-  duration: 1
+  ease: 'linear',
+  duration: 1,
 };
 
-/* --------------------------------- styles --------------------------------- */
+const ButtonBg = {
+  hover: {
+    scale: 20,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  closed: {
+    scale: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  success: {
+    scale: 20,
+    transition: {
+      duration: 0.2,
+    },
+  },
+  error: {
+    scale: 20,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
 
-const SButton = styled.button<ButtonProps>`
-  color: ${props => props.color};
-  background: ${props => (props.disabled ? '#cccccc' : props.background)};
-`;
-const ButtonWrapper = styled.div`
-  width: fit-content;
-`;
+/* -------------------------------------------------------------------------- */
+/*                            Button Implementation                           */
+/* -------------------------------------------------------------------------- */
 
-
-
-const RefButton: React.ForwardRefRenderFunction<ButtonHandler,ButtonProps> =  ({ onClick, label, icon, ...props },ref) => {
+const RefButton: React.ForwardRefRenderFunction<ButtonHandler, ButtonProps> = (
+  { onClick, label, icon, variant = 'default', ...props },
+  ref,
+) => {
   const [isPending, setPending] = useState<boolean>(false);
   const [clickDisable, setClickDisable] = useState<boolean>(false);
+  const [buttonState, setButtonState] = useState<string>('closed');
+
   const _handleEvent = (e, parentHandler) => {
-    if(clickDisable){
+    if (clickDisable) {
       return;
     }
     setPending(true);
     parentHandler ? parentHandler(e) : e;
   };
   useUpdateEffect(() => {
-    setClickDisable(true)
-    return () => {
-      // do something
-    };
+    if (isPending) {
+      setClickDisable(true);
+    }
   }, [isPending]);
- 
-  useImperativeHandle(ref, () => ({
 
+  useImperativeHandle(ref, () => ({
     result: (isSuccess: boolean) => {
       setPending(false);
-    }
-
+      setClickDisable(false);
+      setButtonState(isSuccess ? 'success' : 'error');
+    },
   }));
- 
-
   return (
-    <ButtonWrapper>
-      <motion.div {...getAnimationProps()} onClick={e => _handleEvent(e, onClick)}>
-        <SButton label={label} type="button" {...props} className={`flex items-center px-4 py-2 focus:outline-none ${props.className}`}>
-          {isPending ? (
-            <motion.div 
-            className={`pr-2 spin-origin` }
-            style={{originX: 0.34 }}
-            animate={{ rotate: 360}}
-             transition={spinTransition}
-
-            >
-              <Icon icon="AiOutlineLoading3Quarters"  />
-            </motion.div>
+    <BnStyles.ButtonWrapper>
+      <motion.div
+        whileTap={'tap'}
+        variants={tapAnimation}
+        onClick={e => _handleEvent(e, onClick)}
+        onMouseEnter={() => setButtonState('hover')}
+        onMouseLeave={() => setButtonState('closed')}
+      >
+        <BnStyles.SButton
+          variant={buttonState}
+          label={label}
+          animate={buttonState}
+          type="button"
+          {...props}
+          className={`flex items-center px-4 py-2 focus:outline-none ${props.className}`}
+        >
+          <BnStyles.BgCircle
+            variant={buttonState}
+            initial={{ scale: 0 }}
+            animate={buttonState}
+            variants={ButtonBg}
+          />
+          {buttonState === 'error' ? (
+            <BnStyles.ButtonLabel>Failed</BnStyles.ButtonLabel>
+          ) : buttonState === 'success' ? (
+            <BnStyles.ButtonLabel>Success</BnStyles.ButtonLabel>
           ) : (
-            <>
-              {icon && <Icon icon={icon} className={`mr-2`} />}
-            </>
+            <BnStyles.ButtonContent>
+              {isPending ? (
+                <BnStyles.ButtonIcon
+                  className={`pr-2 spin-origin`}
+                  style={{ originX: 0.34 }}
+                  animate={{ rotate: 360 }}
+                  transition={spinTransition}
+                >
+                  <Icon icon="AiOutlineLoading3Quarters" />
+                </BnStyles.ButtonIcon>
+              ) : (
+                <>{icon && <Icon icon={icon} className={`mr-2`} />}</>
+              )}
+              <BnStyles.ButtonLabel>{label}</BnStyles.ButtonLabel>
+            </BnStyles.ButtonContent>
           )}
-          {label}
-        </SButton>
+        </BnStyles.SButton>
       </motion.div>
-    </ButtonWrapper>
+    </BnStyles.ButtonWrapper>
   );
 };
 
-export const Button = React.forwardRef(RefButton);
+export const Button = React.memo(React.forwardRef(RefButton));
