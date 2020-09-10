@@ -82,4 +82,6 @@ export const ButtonContent = styled.div`
 export const ButtonIcon = styled(motion.div)`
   width: 24px;
 `;
-export const ButtonLabel = styled.div``;
+export const ButtonLabel = styled.div`
+z-index:0
+`;

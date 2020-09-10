@@ -13,6 +13,7 @@ import {
   changeDocumentDirection,
 } from '../utils/i18n';
 import { store } from '../store';
+import { ThemeProvider } from 'styled-components';
 
 const { allLanguages, defaultLanguage } = i18nConfig;
 
@@ -50,9 +51,11 @@ class MyApp extends App<AppInitialProps> {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
         </Head>
         <Provider store={store}>
+        <ThemeProvider theme={{ mode: 'light' }}>
           <div dir={direction} className="text-gray-800 antialiased">
             <Component {...pageProps} />
           </div>
+          </ThemeProvider>
         </Provider>
       </>
     );
