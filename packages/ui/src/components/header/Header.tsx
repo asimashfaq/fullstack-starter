@@ -14,14 +14,14 @@ export const Header: React.FC<HeaderProps> = ({ ...props }) => {
       <header className="px-6 py-4 ">
         <div className="flex items-center justify-between mx-auto">
           <Button
+            icon="HiOutlineMenu"
+            label="Home"
             onClick={toggleSidebar}
             className="p-1 mr-5 -ml-1 bg-white hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray"
-          >
-            <Icon icon="HiOutlineMenu" className="dark:text-white" />
-          </Button>
+          />
           <ul className="flex flex-row flex-1 space-x-6 justify-end items-center ">
             <li className="cursor-pointer">
-              <ThemeSwitchButton />
+            {/* <ThemeSwitchButton /> */}
             </li>
             {props.rightDropdown ? (
               <li>

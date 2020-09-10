@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import {
   getI18nStaticPaths,
   withI18n,
@@ -12,7 +12,19 @@ import {
   GetI18nQuery,
   useI18n,
 } from '../../utils/i18n';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { Input } from '@bcdapps/ui/src/components/input';
+import { action } from '@storybook/addon-actions';
+import { Button } from '@bcdapps/ui/src/components/button';
 
+const SignUpSchema = Yup.object().shape({
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Required'),
+    password: Yup.string()
+    .required('Required'),
+});
 const Wrapper = styled.div.attrs({ className: 'login-container' })``;
 const BackgroundImage = styled.div`
   background-image: url(/images/register_bg_2.png);
@@ -21,9 +33,12 @@ const BackgroundImage = styled.div`
 `;
 const ContentContainer = styled.div``;
 const Content = styled.div``;
+const LoginContent = styled.div`
+  overflow:hidden
+`;
 
 const Login: NextPage = () => {
-  const { translations } = useI18n('/pages/[language]/index');
+const { translations } = useI18n('/pages/[language]/login');
 
   return (
     <>
@@ -33,82 +48,65 @@ const Login: NextPage = () => {
       </Head>
       <Wrapper>
         <BackgroundImage />
-        <ContentContainer>
-          <Content>
-            <div className="w-full lg:w-4/12 px-4">
-              <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-">
+        <ContentContainer className="bg-cover h-screen bg-no-repeat ">
+          <Content className="flex h-full  mx-auto justify-center items-center">
+            <div className="w-full justify-center lg:w-4/12 px-4">
+              <LoginContent className="relative flex flex-col min-w-0 break-words mb-6 shadow-lg rounded-lg bg-white ">
                 <div className="rounded-t mb-0 px-6 py-6">
                   <div className="text-center mb-3">
-                    <h6 className="text-gray-600 text-sm font-bold">
+                    <div className="text-gray-600 text-xl font-bold">
                       Sign in with
-                    </h6>
+                    </div>
                   </div>
                 </div>
                 <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                  <form>
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-gray-700 text-xs font-bold mb-"
-                        htmlFor="grid-password"
-                      >
-                        Email
-                      </label>
-                      <input
+                <Formik
+                  initialValues={{
+                    email: '',
+                    password:'',
+                  }}
+                  validationSchema={SignUpSchema}
+                  onSubmit={values => {
+                    setTimeout(() => {
+                      alert(JSON.stringify(values, null, 2));
+                    }, 500);
+                  }}
+                  render={({ errors, touched, validateField, validateForm }) => (
+                    <>
+                    <Form>
+                      <Input
+                        label="Email"
+                        name="email"
                         type="email"
-                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-ful"
-                        placeholder="Email"
-                        style={{ transition: 'all .15s ease' }}
+                        errors={touched.email ? errors : {}}
+                        
+                        placeholder="Enter your email"
                       />
-                    </div>
-                    <div className="relative w-full mb-3">
-                      <label
-                        className="block uppercase text-gray-700 text-xs font-bold mb-"
-                        htmlFor="grid-password"
-                      >
-                        Password
-                      </label>
-                      <input
+                      <Input
+                        label="Password"
+                        name="password"
                         type="password"
-                        className="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-ful"
-                        placeholder="Password"
-                        style={{ transition: 'all .15s ease' }}
+                        errors={touched.password ? errors : {}}
+                        placeholder="Enter your password"
                       />
-                    </div>
-                    <div>
-                      <label className="inline-flex items-center cursor-pointer">
-                        <input
-                          id="customCheckLogin"
-                          type="checkbox"
-                          className="text-gray-800 ml-1 w-5 h-"
+                      <div className='flex flex-row justify-between mt-10 static'>
+                        <Button
+                          onClick={() => console.log}
+                          label="SIGN IN "
+                          className="border-2 rounded-md border-gray-600"
                         />
-                        <span className="ml-2 text-sm font-semibold text-gray-700">
-                          Remember me
-                        </span>
-                      </label>
-                    </div>
-                    <div className="text-center mt-6">
-                      <button
-                        className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                        type="button"
-                      >
-                        Sign In
-                      </button>
-                    </div>
-                  </form>
+                        <Button
+                          onClick={() => console.log}
+                          label="CANCEL "
+                          className="border-2 rounded-md border-gray-600"
+                        />
+                      </div>
+                    </Form>
+                    </>
+                  )}
+                />
                 </div>
-              </div>
-              <div className="flex flex-wrap mt-6">
-                <div className="w-1/2">
-                  <a href="#pablo" className="text-gray-30">
-                    <small>Forgot password?</small>
-                  </a>
-                </div>
-                <div className="w-1/2 text-right">
-                  <a href="#pablo" className="text-gray-30">
-                    <small>Create new account</small>
-                  </a>
-                </div>
-              </div>
+              </LoginContent>
             </div>
           </Content>
         </ContentContainer>

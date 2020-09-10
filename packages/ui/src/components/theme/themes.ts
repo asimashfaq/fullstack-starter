@@ -15,6 +15,7 @@ export const ligthTheme: ThemeConfig = {
 export const darkTheme: ThemeConfig = {
   colors: {
     fill: '#212121',
+    hover: ' #CCCCCC',
     border: '#3C3C3C',
     font: {
       active: '#FFFFFF',
@@ -26,6 +27,7 @@ export const darkTheme: ThemeConfig = {
 export const nightTheme: ThemeConfig = {
   colors: {
     fill: '#1B232C',
+    hover: ' #CCCCCC',
     border: '#343B47',
     font: {
       active: '#FFFFFF',

@@ -14,13 +14,10 @@ export const ThemeSwitchButton: React.FC<ButtonProps> = ({
     <Button
       {...props}
       onClick={toggleTheme}
+      label=""
+      icon={theme === 'dark' ? 'HiOutlineSun' : 'HiOutlineMoon'}
       className="p-2 border-2 rounded-md border-gray-600"
-    >
-      {theme === 'dark' ? (
-        <Icon icon="HiOutlineSun" className="text-white" aria-hidden="true" />
-      ) : (
-        <Icon icon="HiOutlineMoon" className="text-dark" aria-hidden="true" />
-      )}
-    </Button>
+    />
+    
   );
 };

@@ -54,7 +54,6 @@ export const SButton = styled(motion.button).attrs(
   color: ${props => (props.color ? props.color : buttonColor)};
   background-color: ${backgroundColor};
   overflow: hidden;
-  z-index: -1;
 `;
 export const ButtonWrapper = styled.div`
   width: fit-content;
@@ -73,7 +72,6 @@ export const BgCircle = styled(motion.div).attrs(
   border-radius: 50px;
   margin: 0;
   background-color: ${buttonHoverColor};
-  z-index: -1;
 `;
 export const ButtonContent = styled.div`
   z-index: 2;

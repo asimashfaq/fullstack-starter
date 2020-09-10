@@ -52,7 +52,6 @@ const Page: NextPage = () => {
               href="/"
             >
               Tailwind Starter Kit
-              <Button>Click me</Button>
             </a>
             {/* User */}
             {/* <ul className="md:hidden items-center flex flex-wrap list-none">
@@ -191,7 +190,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       ...(await getI18nProps({
-        language: params?.language as string,
+        language: params && params.language as any,
         // The reason we're importing here, is because we can only
         // import node modules here and not in any other file.
         // More specifically, not outside of getStaticProps and getServerSideProps

@@ -15,8 +15,7 @@
     ],
     "plugins": [
         ["@babel/plugin-proposal-decorators", { "legacy": true }],
-        "inline-react-svg",
-        ["macros"],
+
             [
                 "styled-components",
                 {
