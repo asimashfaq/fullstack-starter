@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { ButtonProps } from './types';
 
 /* --------------------------------- styles --------------------------------- */
-const backgroundColor = theme.variants('mode', 'variant', {
+export const backgroundColor = theme.variants('mode', 'variant', {
   default: {
     light: themesMap.light.colors.fill,
     dark: themesMap.dark.colors.fill,

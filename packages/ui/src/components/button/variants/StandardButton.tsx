@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonProps } from '../types';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-
+import {backgroundColor} from '../style'
 function getAnimationProps() {
   return {
     whileTap: {
@@ -12,7 +12,7 @@ function getAnimationProps() {
 }
 const Button = styled.button<ButtonProps>`
   color: ${props => props.color};
-  background: ${props => (props.disabled ? '#cccccc' : props.background)};
+  background: ${props => (props.disabled ? '#cccccc' : backgroundColor)};
 `;
 const ButtonWrapper = styled.div`
   width: fit-content;
