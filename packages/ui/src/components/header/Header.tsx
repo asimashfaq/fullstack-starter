@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import '../../style.css';
 import { Dropdown } from '../dropdown';
-import { Button } from '../button';
-import { ThemeSwitchButton } from '../theme-switcher';
+import { StandardButton } from '../button';
 import { HeaderProps } from './types';
 import { SidebarContext } from '../../context/sidebar.context';
 import { Icon } from '../icon';
@@ -13,15 +12,14 @@ export const Header: React.FC<HeaderProps> = ({ ...props }) => {
     <div className="bg-white shadow-md dark:bg-gray-800 z-40">
       <header className="px-6 py-4 ">
         <div className="flex items-center justify-between mx-auto">
-          <Button
-            icon="HiOutlineMenu"
+          <StandardButton
             label="Home"
             onClick={toggleSidebar}
-            className="p-1 mr-5 -ml-1 bg-white hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray"
-          />
+            className="p-1 mr-5 -ml-1 text-black hover:bg-white dark:bg-transparent dark:text-white focus:shadow-outline-gray"
+          ><Icon icon="HiOutlineMenu"/>Home</StandardButton>
           <ul className="flex flex-row flex-1 space-x-6 justify-end items-center ">
             <li className="cursor-pointer">
-            {/* <ThemeSwitchButton /> */}
+            {/* <ThemeSwitchButton label="" /> */}
             </li>
             {props.rightDropdown ? (
               <li>

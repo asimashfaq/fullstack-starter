@@ -1,9 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Popper from 'popper.js';
 import { IDropdownProps } from './types';
 import { IMenuItemProps } from '../sidebar/types';
 import { Icon } from '../icon';
+import { StandardButton } from '../button';
 
 export const Dropdown: React.FC<IDropdownProps> = ({
   placement = 'bottom-end',
@@ -30,7 +30,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({
   return (
     <div className="relative">
       <button
-        className="p-2 border-2 rounded-md border-gray-600 dark:hover:bg-gray-700 dark:text-white outline-none focus:outline-none"
+        className="p-2 border-2 text-black rounded-md border-gray-600 dark:hover:bg-gray-700 dark:text-white outline-none focus:outline-none"
         ref={btnDropdownRef}
         onClick={() => {
           dropdownPopoverShow ? closeDropdownPopover() : openDropdownPopover();
@@ -47,15 +47,14 @@ export const Dropdown: React.FC<IDropdownProps> = ({
       >
         {menuItems.map((item: IMenuItemProps) => (
           <li key={item.path} className="relative px-2 py-1">
-            <NavLink
-              exact
-              to={item.path}
+            <a            
+              href={item.path}
               className="inline-flex items-center w-full cursor-pointer  hover:text-gray-800 hover:bg-gray-100"
-              activeClassName="text-gray-800"
+              
             >
               <Icon className="w-5 h-5" icon={item.icon} />
               <span className="ml-3">{item.name}</span>
-            </NavLink>
+            </a>
           </li>
         ))}
       </ul>
