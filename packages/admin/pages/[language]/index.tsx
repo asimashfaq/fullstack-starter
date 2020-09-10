@@ -10,8 +10,11 @@ import {
   GetI18nQuery,
   useI18n,
 } from '../../utils/i18n';
-import { Button } from '@bcdapps/ui';
+import { Dashboard, SidebarProvider, ThemeProvider, BackgroundProvider, Background } from '@bcdapps/ui';
+// import { ThemeProvider } from '../src/context/theme.context';
+// import { SidebarProvider } from '../src/context/sidebar.context';
 import * as S from '../../components/styles';
+import { Router, browserHistory } from 'react-router';
 
 const Page: NextPage = () => {
   const { translations } = useI18n('/pages/[language]/index');
@@ -24,6 +27,18 @@ const Page: NextPage = () => {
       </Head>
 
       <S.Wrapper>
+        <Router history={browserHistory}>
+          <SidebarProvider>
+            {/* <ThemeProvider> */}
+              <BackgroundProvider>
+                <Dashboard>
+                    <Background url={'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_1280.jpg'} bgColor="#1b2b48" offset="20%" /> 
+                </Dashboard> 
+              </BackgroundProvider>
+            {/* </ThemeProvider> */}
+          </SidebarProvider>
+        </Router>
+        
         <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-no-wrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-beclassNameeen relative md:w-64 z-10 py-4 px-6">
           <div className="md:flex-col md:items-stretch md:min-h-full md:flex-no-wrap px-0 flex flex-wrap items-center justify-beclassNameeen w-full mx-auto">
             {/* Toggler */}

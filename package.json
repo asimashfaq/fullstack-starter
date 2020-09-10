@@ -152,6 +152,7 @@
   },
   "dependencies": {
     "framer-motion": "^2.6.5",
+    "react-router": "2.0.1",
     "tailwindcss": "^1.7.3"
   }
 }
