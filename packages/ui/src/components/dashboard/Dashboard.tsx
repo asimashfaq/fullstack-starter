@@ -1,58 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Sidebar } from '../sidebar';
 import { Header } from '../header';
-import { IMenuItemProps } from 'components/sidebar/types';
 import { IDropdownProps } from 'components/dropdown/types';
+import { DashboardProps } from './types';
+import styled from 'styled-components';
+import { SidebarContext } from '../../context/sidebar.context';
+interface DashboardContainerProps {
+  isOpen: boolean
+}
 
-export const Dashboard: React.FC = ({ children }) => {
-  const menuItems: IMenuItemProps[] = [
-    {
-      path: '/app/dashboard',
-      icon: 'HiOutlineHome',
-      name: 'Dashboard',
-      exact: true,
-    },
-    {
-      path: '/app/forms',
-      icon: 'HiOutlineNewspaper',
-      name: 'Forms',
-    },
-    {
-      path: '/app/charts',
-      icon: 'HiOutlineChartPie',
-      name: 'Charts',
-    },
-  ];
+const DashboardContainer = styled.div<DashboardContainerProps>`
+  display: grid;
+  grid-template-columns:${props => props.isOpen ? "256px auto" : "0px auto" } ;
+  grid-template-rows: 50px auto 50px;
+  grid-template-areas:
+    'sidenav header'
+    'sidenav main'
+    'sidenav footer';
+  height: 100vh;
+`;
+
+
+const MainWrapper = styled.div`
+  grid-area: main;
+`;
+const FooterWrapper = styled.div`
+  grid-area: footer;
+`;
+export const Dashboard: React.FC<DashboardProps> = ({ children, siderbar, 
+  headerDropDownMenuTitle = 'Settings',
+  headerDropDownMenuItems, title= "Admin Panel", footer= "Developed with love" }) => {
+  const { isSidebarOpen } = useContext(SidebarContext)
+
   return (
-    <div className="flex h-screen sm:flex-col-reverse dark:bg-gray-800 relative justify-end">
-      <Sidebar menuItems={menuItems} />
-      <div className="flex flex-col w-full">
-        <Header
-          rightDropdown={
-            {
-              title: 'Settings',
-              menuItems: [
-                {
-                  icon: 'HiOutlineUser',
-                  name: 'Profile',
-                  path: '/me',
-                },
-                {
-                  icon: 'HiOutlineCog',
-                  name: 'Settings',
-                  path: '/settings',
-                },
-                {
-                  icon: 'HiOutlineLogout',
-                  name: 'Logout',
-                  path: '/logout',
-                },
-              ],
-            } as IDropdownProps
-          }
-        />
-        <div className="z-20">{children}</div>
-      </div>
-    </div>
+    <DashboardContainer isOpen={isSidebarOpen as boolean}>
+      <Header
+        rightDropdown={
+          {
+            title: headerDropDownMenuTitle,
+            menuItems: headerDropDownMenuItems,
+          } as IDropdownProps
+        }
+      />
+      <Sidebar menuItems={siderbar} title={title} />
+      <MainWrapper className="z-20">{children}</MainWrapper>
+      <FooterWrapper>{footer}</FooterWrapper>
+    </DashboardContainer>
   );
 };

@@ -5,12 +5,15 @@ import { StandardButton } from '../button';
 import { HeaderProps } from './types';
 import { SidebarContext } from '../../context/sidebar.context';
 import { Icon } from '../icon';
-
+import styled from 'styled-components';
+const HeaderWrapper = styled.div`
+  grid-area: header;
+`;
 export const Header: React.FC<HeaderProps> = ({ ...props }) => {
   const { toggleSidebar } = useContext(SidebarContext);
   return (
-    <div className="bg-white shadow-md dark:bg-gray-800 z-40">
-      <header className="px-6 py-4 ">
+    <HeaderWrapper className="bg-white shadow-md dark:bg-gray-800 z-40">
+      <header className="px-1 py-1 ">
         <div className="flex items-center justify-between mx-auto">
           <StandardButton
             label="Home"
@@ -34,6 +37,6 @@ export const Header: React.FC<HeaderProps> = ({ ...props }) => {
           </ul>
         </div>
       </header>
-    </div>
+    </HeaderWrapper>
   );
 };

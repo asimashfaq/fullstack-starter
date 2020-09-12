@@ -11,6 +11,8 @@ import {
 } from '../../utils/i18n';
 import * as S from '../../components/styles';
 import {SidebarProvider, Dashboard} from '@bcdapps/ui'
+import { sideBarItems } from '../../components/sidebar/menu';
+import { HeaderDropDownMenu } from '../../components/Header/menu';
 const Page: NextPage = () => {
   const { translations } = useI18n('/pages/[language]/index');
 
@@ -22,7 +24,9 @@ const Page: NextPage = () => {
       </Head>
       <SidebarProvider>
       <S.Wrapper>
-        <Dashboard/>
+        <Dashboard siderbar={sideBarItems} headerDropDownMenuItems={HeaderDropDownMenu}>
+        Welcome
+        </Dashboard>
       </S.Wrapper>
       </SidebarProvider>
 

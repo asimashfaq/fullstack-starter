@@ -6,19 +6,22 @@ import { isRenderer } from '../../types';
 import { SidebarContext } from '../../context/sidebar.context';
 import { Backdrop } from '../backdrop';
 import { motion } from "framer-motion";
+import styled from 'styled-components';
 
 const sidebar = {
   open: { 
     x: 0, 
     transition: {
-      duration: 0.5,
+      duration: 0.2,
     }
   },
   closed: {  
-    x: "-40%"
+    x: "-400px"
   },
 };
-
+const SidebarWrapper = styled.div`
+  grid-area: sidenav;
+`;
 export const Sidebar: React.FC<ISideBarProps> = ({
   menuItems,
   title,
@@ -26,16 +29,16 @@ export const Sidebar: React.FC<ISideBarProps> = ({
 }) => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext)
   return (
-    <>
-      <Backdrop className={`${isSidebarOpen ? 'block' : 'hidden'}`} onClick={closeSidebar as any} />
+    <SidebarWrapper>
+      <Backdrop className={ 'hidden'} onClick={closeSidebar as any} />
       <motion.div
-        initial={false}
-        animate={isSidebarOpen ? "open" : "closed"}
+        initial={"open"}
+        animate={isSidebarOpen ? "open": "closed"}
         variants={sidebar}
-        className={'absolute z-50 h-full mt-16'}
+        className={'z-50 h-full'}
       >
-        <aside className={`flex h-full flex-shrink-0 w-64 overflow-y-auto z-30 bg-white dark:bg-gray-800 dark:text-white ${isSidebarOpen ? 'block' : 'hidden'}`}>
-          <div className="py-4 w-full h-full">
+        <aside className={`flex h-full flex-shrink-0 w-64 overflow-y-auto z-30 bg-white shadow-md block`}>
+          <div className="pt-5 w-full h-full">
             {isRenderer(title) ? (
               title.render(props)
             ) : (
@@ -45,6 +48,6 @@ export const Sidebar: React.FC<ISideBarProps> = ({
           </div>
         </aside>
       </motion.div>
-    </>
+    </SidebarWrapper>
   );
 };

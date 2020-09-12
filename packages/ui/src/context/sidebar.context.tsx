@@ -9,7 +9,7 @@ type ContextProps = {
 export const SidebarContext = createContext<Partial<ContextProps>>({})
 
 export const SidebarProvider = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen)
