@@ -130,6 +130,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rollup-plugin-postcss": "^3.1.8",
+    "shortid": "^2.2.15",
     "storybook-addon-performance": "0.11.0",
     "styled-theming": "^2.2.0",
     "tailwindcss-multi-theme": "^1.0.3",
