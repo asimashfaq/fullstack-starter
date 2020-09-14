@@ -7,3 +7,4 @@ export * from './components/input';
 export * from './components/sidebar';
 export * from './components/theme-switcher';
 export * from './context/sidebar.context';
+export * from './components/notification'
