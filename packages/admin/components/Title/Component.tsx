@@ -3,19 +3,15 @@ import { useI18n } from '../../utils/i18n';
 
 const TranslationsNeeded = '/components/Title';
 
-const Component: React.FC<{ title: string }> = ({ title }) => {
+const Component: React.FC<{ title: string; subtitle?: string }> = ({
+  title,subtitle,
+}) => {
   const { language, translations, config } = useI18n(TranslationsNeeded);
 
   return (
-    <div style={{ padding: '10px 10px' }}>
-      <h1>{title}</h1>
-      <h2>
-        {translations.language_description} {config.name}
-      </h2>
-      <p>
-        {translations.prefix_description} {/* Should be the same */}
-        {config.prefix || language}
-      </p>
+    <div className="pl-4 flex flex-col py-4 mb-4">
+      <h1 className="text-lg text-default font-bold font-poppins">{title}</h1>
+      <h2 className="text-sm text-secondary">{subtitle}</h2>
     </div>
   );
 };

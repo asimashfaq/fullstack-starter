@@ -25,7 +25,7 @@ const allLanguages: Config = {
   },
 };
 
-const defaultLanguage: Language = allLanguages.ar;
+const defaultLanguage: Language = allLanguages.en;
 
 const domains: Domains = {
   development: 'http://localhost:3000',

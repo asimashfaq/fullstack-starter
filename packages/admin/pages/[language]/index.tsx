@@ -9,10 +9,7 @@ import {
   GetI18nQuery,
   useI18n,
 } from '../../utils/i18n';
-import * as S from '../../components/styles';
-import {SidebarProvider, Dashboard} from '@bcdapps/ui'
-import { sideBarItems } from '../../components/sidebar/menu';
-import { HeaderDropDownMenu } from '../../components/Header/menu';
+import { Main } from '../../layout/main';
 const Page: NextPage = () => {
   const { translations } = useI18n('/pages/[language]/index');
 
@@ -22,14 +19,7 @@ const Page: NextPage = () => {
         <meta name="title" content={translations.title as string} />
         <title>{translations.title}</title>
       </Head>
-      <SidebarProvider>
-      <S.Wrapper>
-        <Dashboard siderbar={sideBarItems} headerDropDownMenuItems={HeaderDropDownMenu}>
-        Welcome
-        </Dashboard>
-      </S.Wrapper>
-      </SidebarProvider>
-
+      <Main>Welcome</Main>
     </>
   );
 };
@@ -46,11 +36,11 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       ...(await getI18nProps({
-        language: params && params.language as any,
+        language: params && (params.language as any),
         // The reason we're importing here, is because we can only
         // import node modules here and not in any other file.
         // More specifically, not outside of getStaticProps and getServerSideProps
-        fs: (await import('promise-fs')), // pass it to import all the translations
+        fs: await import('promise-fs'), // pass it to import all the translations
       })),
     },
   };

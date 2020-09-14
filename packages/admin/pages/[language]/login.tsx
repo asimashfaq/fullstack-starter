@@ -11,7 +11,7 @@ import { Input } from '@bcdapps/ui/src/components/input';
 import { Button, StandardButton } from '@bcdapps/ui/src/components/button';
 import { ButtonHandler } from '@bcdapps/ui';
 
-const SignUpSchema = Yup.object().shape({
+const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email address')
     .required('Required'),
@@ -56,7 +56,7 @@ const Login: NextPage = () => {
                       email: 'a@a.com ',
                       password: '12',
                     }}
-                    validationSchema={SignUpSchema}
+                    validationSchema={LoginSchema}
                     
                     onSubmit={(values, { resetForm }) => {
                       setTimeout(() => {
