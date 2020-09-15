@@ -6,16 +6,21 @@ import {
 import { createLogger } from 'redux-logger';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { ActionType } from 'typesafe-actions';
-
+import { getSubscriptionPlansEpic } from './modules/subscription_plans/epics';
+import SubscriptionPlanReducer, {
+  SubscriptionPlansActionsWithPayload,
+} from './modules/subscription_plans/reducer';
 export const rootReducer = combineReducers({
+  subscription_plans: SubscriptionPlanReducer,
+
   // router: connectRouter(history),
 });
-
-type finalActions = ActionType<any>;
+type ActionsWithPayloads = SubscriptionPlansActionsWithPayload;
+type finalActions = ActionType<ActionsWithPayloads>;
 
 export type RootState = ReturnType<typeof rootReducer>;
 // Configure epics
-const epics = combineEpics();
+const epics = combineEpics(getSubscriptionPlansEpic);
 const epicMiddleware = createEpicMiddleware<
   finalActions, // input actions
   finalActions, // output actions
@@ -42,5 +47,5 @@ function configureAppStore(initialState?: any) {
 }
 
 export const store = configureAppStore();
-//epicMiddleware.run(epics);
+epicMiddleware.run(epics);
 export type AppDispatch = typeof store.dispatch;
