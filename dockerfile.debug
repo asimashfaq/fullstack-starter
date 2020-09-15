@@ -1,0 +1,20 @@
+ARG NODE_VERSION=12.16.1
+
+FROM node:${NODE_VERSION}-alpine as os
+RUN mkdir -p /home/application
+RUN chmod -R 777 /home/application
+WORKDIR /home/application
+ADD package*.json ./
+ADD yarn.lock ./
+ADD .yarnrc ./
+
+COPY babel.config.js ./
+COPY patches/nestjs-flub+0.2.0.patch ./patches/nestjs-flub+0.2.0.patch
+RUN yarn install
+COPY . .
+RUN yarn build:backend
+
+COPY free.bcdapps.client.certificate free.bcdapps.client.certificate
+
+EXPOSE 3000
+CMD ["node", "dist/packages/backend/main.js"]

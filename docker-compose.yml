@@ -1,0 +1,39 @@
+version: '3'
+services:
+  node-server:
+    build: ./
+    image: node-server
+    ports:
+      - 5000:5000
+      - 3001:3001
+    environment:
+      NODE_ENV: development
+      DB_URI: https://a.free.bcdapps.ravendb.cloud
+      DB_NAME: sampledatabase
+      DB_CERTS: free.bcdapps.client.certificate/free.bcdapps.client.certificate.pfx
+      HOST: 0.0.0.0
+      PORT: 3001
+    links:
+      - verdaccio
+    depends_on:
+      - verdaccio
+    networks:
+      - backend_network
+  envoy:
+    build: ./docker/envoy
+    image: envoy-grpc-backend
+    restart: always
+    ports:
+      - '8080:8080'
+      - '9901:9901'
+    networks:
+      - backend_network
+  verdaccio:
+    image: verdaccio/verdaccio:latest
+    ports:
+      - 4873:4873
+    networks:
+      - backend_network
+networks:
+  backend_network:
+    driver: 'bridge'

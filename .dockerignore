@@ -2,3 +2,5 @@ node_modules
 dist
 .vscode
 *.log
+packages/**/dist
+packages/**/node_modules
