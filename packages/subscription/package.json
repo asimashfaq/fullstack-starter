@@ -1,11 +1,10 @@
 {
   "name": "@bcdapps/subscription",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "module": "dist/subscription.esm.js",
   "typings": "dist/index.d.ts",
   "license": "MIT",
-  "private": true,
   "files": [
     "dist"
   ],
@@ -17,17 +16,5 @@
     "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist/types",
     "typecheck": "tsc -p tsconfig.json"
 
-  },
-  "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.10.5",
-    "bufferutil": "^4.0.1",
-    "inversify": "^5.0.1",
-    "ravendb": "^4.1.8",
-    "utf-8-validate": "^5.0.2",
-    "webpack-cli": "^3.3.12"
-  },
-  "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@bcdapps/common-backend": "1.0.0"
   }
 }
