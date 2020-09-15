@@ -5,6 +5,7 @@ export * from './components/header';
 export * from './components/icon';
 export * from './components/input';
 export * from './components/sidebar';
+export * from './components/table';
 export * from './components/theme-switcher';
 export * from './context/sidebar.context';
 export * from './components/notification'

@@ -114,6 +114,7 @@
     "graphql": "^15.3.0",
     "husky": "^4.2.5",
     "lerna": "^3.22.1",
+    "namor": "^2.0.2",
     "patch-package": "^6.2.2",
     "perf_hooks": "^0.0.1",
     "postcss-easy-import": "^3.0.0",
@@ -153,6 +154,7 @@
   },
   "dependencies": {
     "framer-motion": "^2.6.5",
+    "react-table": "^7.5.0",
     "tailwindcss": "^1.7.3"
   }
 }
